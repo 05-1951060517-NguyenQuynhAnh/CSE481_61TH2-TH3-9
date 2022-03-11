@@ -1,3 +1,5 @@
+<?php include('config/database.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +17,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
     <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
@@ -109,7 +111,7 @@
                             </ul>
                         </div>
                         <div class="col-md-3 mt-1 d-flex">
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="login.php" class="text-decoration-none link-dark">
                                 <div class="d-flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                         class="bi bi-people me-2" viewBox="0 0 16 16">
@@ -145,129 +147,81 @@
             <div class="mx-5">
 
                 <div class="mt-4 owl-carousel">
+                    <?php 
+                                $sql2 = "SELECT * FROM sanpham";
+                                $res2 = mysqli_query($conn, $sql2);
+                                $count2 = mysqli_num_rows($res2);
+                                if($count2>0)
+                                {
+                                    while($row=mysqli_fetch_assoc($res2))
+                                    {
+                            ?>
                     <div class="item ">
                         <div class="card me-0 border-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
+                            <img src="img/<?php echo $row['img'];?>" class="card-img-top" alt="...">
+                            <div class="overlay d-flex">
+                                <a href="">
+                                    <div  class="detail rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor" style="margin:11px" class="bi bi-card-heading"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                            <path
+                                                d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                                        </svg>
+                                    </div>
+                                </a>
+                                <a href="cart/cart_add.php?id=<?php echo $item['MaSP'] ?>">
+                                    <div  class="detail ms-3 rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor"style="margin:11.25px" class="bi bi-cart4" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
                             <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
+                                <p class="card-text"><?php echo $row['TenSP']; ?></p>
+                                <p class="fw-bold"><?php echo $row['Giaban']; ?></p>
                             </div>
                         </div>
                         <div class="card border-0 me-0" style="width: 18rem;">
                             <img src="img/dam1.webp" class="card-img-top" alt="...">
+                            <div class="overlay d-flex">
+                                <a href="">
+                                    <div  class="detail rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor" style="margin:11px" class="bi bi-card-heading"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                            <path
+                                                d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                                        </svg>
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div  class="detail ms-3 rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor"style="margin:11.25px" class="bi bi-cart4" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
                             <div class="card-body px-0">
                                 <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
                                 <p class="fw-bold">459.000 VNĐ</p>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/ao1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">IELGY Áo Thun Có Cổ Ngắn Tay Dáng Ôm Đơn Giản.</p>
-                                <p class="fw-bold">136.000 VNĐ</p>
-                            </div>
-                        </div>
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/ao2.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Áo tiểu thư tay phồng phong cách sơ mi công sở.</p>
-                                <p class="fw-bold">169.000 VNĐ</p>
-                            </div>
-                        </div>
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="item">
-
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/quan1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Quần Short nữ 4 khuy lưng cao cạp chéo.</p>
-                                <p class="fw-bold">166.000 VNĐ</p>
-                            </div>
-                        </div>
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="item">
-
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="item">
-
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="item">
-
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-                        <div class="card border-0 me-0" style="width: 18rem;">
-                            <img src="img/dam1.webp" class="card-img-top" alt="...">
-                            <div class="card-body px-0">
-                                <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                                <p class="fw-bold">459.000 VNĐ</p>
-                            </div>
-                        </div>
-
-                    </div>
+                    <?php
+                                }
+                            }           
+                            ?>
                 </div>
 
             </div>
@@ -281,21 +235,37 @@
                     <a href="">
                         <img class="img-fluid rounded-3" src="img/ao.png" alt="">
                     </a>
+                    <div class="a">
+                        <p style="color:#666666" class="fw-bold mb-1">Áo</p>
+                        <p style="font-size:14px" class="fw-bold mb-0">36 sản phẩm</p>
+                    </div>
                 </div>
                 <div class="col px-0 me-4">
                     <a href="">
-                        <img class="img-fluid rounded-3" src="img/ao.png" alt="">
+                        <img class="img-fluid rounded-3" src="img/quan.png" alt="">
                     </a>
+                    <div class="a">
+                        <p style="color:#666666" class="fw-bold mb-1">Quần</p>
+                        <p style="font-size:14px" class="fw-bold mb-0">43 sản phẩm</p>
+                    </div>
                 </div>
                 <div class="col  px-0 me-4">
                     <a href="">
-                        <img class="img-fluid rounded-3" src="img/ao.png" alt="">
+                        <img class="img-fluid rounded-3" src="img/vay.png" alt="">
                     </a>
+                    <div class="a">
+                        <p style="color:#666666" class="fw-bold mb-1">Váy</p>
+                        <p style="font-size:14px" class="fw-bold mb-0">42 sản phẩm</p>
+                    </div>
                 </div>
                 <div class="col px-0">
                     <a href="">
-                        <img class="img-fluid rounded-3" src="img/ao.png" alt="">
+                        <img class="img-fluid rounded-3" src="img/phukien.png" alt="">
                     </a>
+                    <div class="a">
+                        <p style="color:#666666" class="fw-bold mb-1">Phụ kiện</p>
+                        <p style="font-size:14px" class="fw-bold mb-0">12 sản phẩm</p>
+                    </div>
                 </div>
 
             </div>
@@ -311,7 +281,6 @@
                     sau khi bán hết.</p>
             </div>
             <div class="mx-5">
-
                 <div class="mt-4 owl-carousel">
                     <div class="item ">
                         <div class="card me-0 border-0" style="width: 18rem;">

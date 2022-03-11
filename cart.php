@@ -1,3 +1,5 @@
+<?php include('config/database.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,44 +129,72 @@
     </section>
     <section>
         <div class="container">
-            <h4 class="text-center fw-bold" style="color:#d61114;">
-                Tất cả sản phẩm</h4>
-            <div class="row d-flex  justify-content-center px-5">
-                <div class="card  border-0" style="width: 18rem;">
-                    <img src="img/dam1.webp" class="card-img-top" alt="...">
-                    <div class="card-body px-0">
-                        <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                        <p class="d-inline fw-bold">459.000 VNĐ </p>
-                        <p class="d-inline fw-bold text-muted text-decoration-line-through">459.000 VNĐ </p>
+            <div class="px-5">
+
+                <table class="table">
+                    <thead>
+                        <tr style="color:#888;">
+                            <th class="col-md-4" scope="col">Tên sản phẩm</th>
+                            <th scope="col">Phân loại hàng</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thành tiền</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">
+                                <img class="d-inline" width="100px" src="img/ao1.webp" alt="">
+                                <p class="d-inline ms-3">VÁy công sở</p>
+                            </td>
+                            <td class="pt-5">Size S</td>
+                            <td class="pt-5">Size S</td>
+                            <td class="pt-5"><input style="width : 50px" name="sluong" type="number" prdchill="5"
+                                    value="1"></td>
+                            <td class="pt-5 " style="color:red">345.000đ</td>
+                            <td class="pt-5">Size S</td>
+
+                        </tr>
+                       
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="px-5 ">
+
+                <div class="row mt-5">
+        
+                    <div class="col-md-6">
+                        
                     </div>
-                </div>
-                <div class="card  border-0" style="width: 18rem;">
-                    <img src="img/dam1.webp" class="card-img-top" alt="...">
-                    <div class="card-body px-0">
-                        <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                        <p class="d-inline fw-bold">459.000 VNĐ </p>
-                        <p class="d-inline fw-bold text-muted text-decoration-line-through">459.000 VNĐ </p>
-                    </div>
-                </div>
-                <div class="card  border-0" style="width: 18rem;">
-                    <img src="img/dam1.webp" class="card-img-top" alt="...">
-                    <div class="card-body px-0">
-                        <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                        <p class="d-inline fw-bold">459.000 VNĐ </p>
-                        <p class="d-inline fw-bold text-muted text-decoration-line-through">459.000 VNĐ </p>
-                    </div>
-                </div>
-                <div class="card  border-0" style="width: 18rem;">
-                    <img src="img/dam1.webp" class="card-img-top" alt="...">
-                    <div class="card-body px-0">
-                        <p class="card-text">Set đầm màu xanh trẻ trung, thời thượng AB491.</p>
-                        <p class="d-inline fw-bold">459.000 VNĐ </p>
-                        <p class="d-inline fw-bold text-muted text-decoration-line-through">459.000 VNĐ </p>
+                    <div style="bottom:0px;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;"class="px-5 py-3 col-md-6">
+                        <p class="fs-4 fw-bold">Tổng thanh toán (10 sản phẩm): </p>
+                        <div class="d-flex">
+                            
+                            <p>Số lượng: </p>
+                            
+                            <p class="ms-2">4 </p>
+                        </div>
+                        <div class="d-flex">
+                            
+                            <p>Tổng tiền: </p>
+                            
+                            <p style="color:red" class="ms-2">64523VNĐ </p>
+                        </div>
+                        <a href=""><button style="font-size:14px;color:white;"
+                                class="mt-3 fw-bold col-md-12 btn btn-lg btn-block bg-danger" name="">Đặt hàng</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
