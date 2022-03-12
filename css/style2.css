@@ -52,3 +52,7 @@ visibility: hidden;
         opacity: 1;
     }
 }
+.danhmuc li:hover{
+  border-right: 5px solid #e68e12;
+  background-color: rgba(255, 254, 174, 0.5);
+}

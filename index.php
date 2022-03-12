@@ -1,5 +1,18 @@
 <?php include('config/database.php'); 
 ?>
+<?php
+if(!isset($_SESSION['isLoginOK'])){
+    header("location:login.php");
+}
+?>
+<?php 
+   $email= $_GET['id'];
+   $sql2 = "SELECT * FROM khachhang WHERE email='$email';";
+    $result2 = mysqli_query($conn,$sql2);
+    if(mysqli_num_rows($result2)>0){
+    $row = mysqli_fetch_assoc($result2);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +30,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/style2.css">
     <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
@@ -41,7 +54,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="" method="GET">
+                                <form action="search.php" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -110,6 +123,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <a href="user.php?id=<?php echo $row['MaK']; ?>" class="">dfdf</a>
                         <div class="col-md-3 mt-1 d-flex">
                             <a href="login.php" class="text-decoration-none link-dark">
                                 <div class="d-flex">
@@ -121,7 +135,7 @@
                                     <p class="pt-1" style="font-size:13px">Đăng nhập</p>
                                 </div>
                             </a>
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="signup.php" class="text-decoration-none link-dark">
                                 <div class="ms-3">
                                     <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng ký</p>
                                 </div>

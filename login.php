@@ -29,7 +29,7 @@
                             <div class="py-3 mx-3">
                                 <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="email"
                                     placeholder="Nhập email của bạn">
-                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="text" name="matkhau"
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="matkhau"
                                     placeholder="Mật khẩu">
                                 <button style="color:white;background:#f7b400"
                                     class="mt-3 fw-bold col-md-12 btn btn-lg btn-block" type="submit"
@@ -39,9 +39,7 @@
                                         echo "<p style ='color:red'>{$_GET['error']}</p>";
                                         }
                                 ?>
-                                <a href="" style="font-size:14px" class=" text-center">
-                                    <p class="mt-3">Quên mật khẩu?</p>
-                                </a>
+                            
                                 <hr style="height:0.45px">
                                 <a href="">
                                     <div class="mx-auto p-1  text-center">

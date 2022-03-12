@@ -19,7 +19,7 @@
         if(mysqli_num_rows($result) > 0){
             // CẤP THẺ LÀM VIỆC
             $_SESSION['isLoginOK'] = $email;
-            header("location:index.php?"); //Chuyển hướng về Trang quản trị
+            header("location:index.php?id=$email"); //Chuyển hướng về Trang quản trị
         }else{
             $error = "Bạn nhập thông tin Email hoặc mật khẩu chưa chính xác";
             header("location:login.php?error=$error"); 
