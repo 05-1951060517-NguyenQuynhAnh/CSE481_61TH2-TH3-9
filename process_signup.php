@@ -1,13 +1,13 @@
 <?php
      
-if($_SERVER['REQUEST_METHOD'] =="POST"){
+
     $gioitinh = $_POST['gender'];
     $hovaten = $_POST['hovaten'];
     $ngaysinh = $_POST['ngaysinh'];
     $email = $_POST['email'];
     $matkhau = $_POST['matkhau'];
     
-}
+
 require_once 'config/database.php';
 if(!$conn){
     die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
@@ -21,9 +21,9 @@ if(mysqli_num_rows($result) > 0){
 $error = "Email is exsted";
 header("location:index.php?error=$error"); //Chuyển hướng về Trang quản trị
 }else{
-$sql = "INSERT INTO khachhang(TenK,Gioitinh,Ngaysinh,email,matkhau) VALUES('$hovaten ', '$gioitinh', ' $ngaysinh','$email','$matkhau')";
+$sql = "INSERT INTO khachhang(TenK, Gioitinh, Ngaysinh, email, matkhau) VALUES('$hovaten ', '$gioitinh', ' $ngaysinh','$email','$matkhau')";
 $result = mysqli_query($conn,$sql);
-if($result >0){
+if($result ==true){
     // CẤP THẺ LÀM VIỆC.
     header("location:login.php"); 
 }else{
