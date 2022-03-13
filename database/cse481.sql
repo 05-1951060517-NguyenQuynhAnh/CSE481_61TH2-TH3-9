@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 12, 2022 lúc 06:30 PM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 8.0.13
+-- Thời gian đã tạo: Th3 13, 2022 lúc 08:17 AM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `giohang` (
   `MaSP` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaK` int(11) NOT NULL,
-  `Soluong` int(11) DEFAULT NULL
+  `Soluong` int(11) DEFAULT NULL,
+  `size` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `giohang`
+--
+
+INSERT INTO `giohang` (`MaSP`, `MaK`, `Soluong`, `size`) VALUES
+('SP01', 1, 2, '');
 
 -- --------------------------------------------------------
 
@@ -119,7 +127,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MaLH`, `Giaban`, `Gianhap`, `Tylegiamgia`, `Soluong`, `Mota`, `Trangthai`, `img`) VALUES
-('SP01', 'Set đầm màu xanh trẻ trung', 'LH03', '349.000', '299.000', 0, 12, 'Tên sản phẩm: Áo khoác nắp túi\r\nMàu sắc: Xanh\r\nSố đo ngực: 86cm\r\nSố đo dài tay: 57cm\r\nSố đo cửa tay: 20cm\r\nSố đo vai: 34cm\r\nChiều dài áo: 40cm', 'Đang bán', 'dam1.webp');
+('SP01', 'Set đầm màu xanh trẻ trung', 'LH03', '349.000', '299.000', 0, 12, 'Tên sản phẩm: Áo khoác nắp túi\nMàu sắc: Xanh\nSố đo ngực: 86cm\nSố đo dài tay: 57cm\nSố đo cửa tay: 20cm\nSố đo vai: 34cm\nChiều dài áo: 40cm', 'Đang bán', 'dam1.webp');
 
 --
 -- Chỉ mục cho các bảng đã đổ
