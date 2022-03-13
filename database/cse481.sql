@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 12, 2022 lúc 06:30 PM
+-- Thời gian đã tạo: Th3 13, 2022 lúc 05:05 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.0.13
 
@@ -24,14 +24,60 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `chitietsanpham`
+--
+
+CREATE TABLE `chitietsanpham` (
+  `MaSP` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size1` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size3` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size4` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img1` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img3` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mota1` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mota2` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mota3` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mota4` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietsanpham`
+--
+
+INSERT INTO `chitietsanpham` (`MaSP`, `size1`, `size2`, `size3`, `size4`, `img1`, `img2`, `img3`, `mota1`, `mota2`, `mota3`, `mota4`) VALUES
+('SP01', 'Size S', 'Size M', 'Size L', 'Size XL', 'dam1.png', '[value-7]', '[value-8]', 'Màu sắc: Xanh', 'Số đo ngực: 86cm,\r\nSố đo dài tay: 57cm,\r\nSố đo cửa', '[value-11]', '[value-12]'),
+('SP02', 'S', 'M', 'L', 'XL', 'a1.png', 'a12.png', 'a13.png', 'Áo len đan vintage Pullover Cardigan', 'Chất liệu: Len', NULL, NULL),
+('SP03', 'S', 'M', 'L', 'XL', 'hd2.webp', 'hd21.webp', 'hd22.webp', 'HADES BASIC WHITE TEE', NULL, NULL, NULL),
+('SP04', 'S', 'M', 'L', 'XL', 'd1.jpg', 'd12.jpg', 'd13.jpg', 'Đầm Adel Flower Dress', 'Size S : dài 113cm - ngang ngực 92cm', 'Size M: dài 114cm - ngang ngực 96cm', 'Size L: dài 115cm - ngang ngực 100cm'),
+('SP05', 'S', 'M', 'L', 'XL', 'd2.png', 'd22.png', 'd23.png', 'Đầm hoa gân tăm', 'Phong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retr', NULL, NULL),
+('SP05', 'S', 'M', 'L', 'XL', 'd2.png', 'd22.png', 'd23.png', 'Đầm hoa gân tăm', 'Phong cách: Cơ bản, Hàn Quốc, Tối giản, Retro', NULL, NULL),
+('SP06', 'S', 'M', 'L', NULL, 'a2.png', 'a21.png', 'a22.png', 'Checked Sweater len', 'Size S: dài 66cm - ngang ngực 118cm', 'Size M: dài 67cm - ngang ngực 122cm', 'Size L: dài 68cm - ngang ngực 126cm'),
+('SP07', 'S', 'M', 'L', NULL, 'd3.png', 'd31.png', 'd32.png', 'Đầm Jeong suông gân tăm - Đầm len phong cách Hàn Q', 'Size S: dài 95cm - ngang ngực 104cm', 'Size M: dài 96cm - ngang ngực 106cm', 'Size L: dài 97cm - ngang ngực 108cm'),
+('SP08', 'S', 'M', 'L', NULL, 'q1.png', 'q11.png', 'q12.png', 'Quần culottes gân tăm', 'Màu sắc: Be, Nâu d.d302a', NULL, NULL),
+('SP08', 'S', 'M', 'L', NULL, 'q1.png', 'q11.png', 'q12.png', 'Quần culottes gân tăm', 'Màu sắc: Be, Nâu, Rêu', NULL, NULL),
+('SP09', 'S', 'M', 'L', NULL, 'q2.png', 'q21.png', 'q22.png', 'Quần ống suông 2 cúc', 'Màu sắc: Be, Nâu, Đen', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `giohang`
 --
 
 CREATE TABLE `giohang` (
   `MaSP` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaK` int(11) NOT NULL,
-  `Soluong` int(11) DEFAULT NULL
+  `Soluong` int(11) DEFAULT NULL,
+  `size` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `giohang`
+--
+
+INSERT INTO `giohang` (`MaSP`, `MaK`, `Soluong`, `size`) VALUES
+('SP01', 1, 2, '');
 
 -- --------------------------------------------------------
 
@@ -119,11 +165,25 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MaLH`, `Giaban`, `Gianhap`, `Tylegiamgia`, `Soluong`, `Mota`, `Trangthai`, `img`) VALUES
-('SP01', 'Set đầm màu xanh trẻ trung', 'LH03', '349.000', '299.000', 0, 12, 'Tên sản phẩm: Áo khoác nắp túi\r\nMàu sắc: Xanh\r\nSố đo ngực: 86cm\r\nSố đo dài tay: 57cm\r\nSố đo cửa tay: 20cm\r\nSố đo vai: 34cm\r\nChiều dài áo: 40cm', 'Đang bán', 'dam1.webp');
+('SP01', 'Set đầm màu xanh trẻ trung', 'LH03', '349.000', '299.000', 0, 12, 'Tên sản phẩm: Áo khoác nắp túi\nMàu sắc: Xanh\nSố đo ngực: 86cm\nSố đo dài tay: 57cm\nSố đo cửa tay: 20cm\nSố đo vai: 34cm\nChiều dài áo: 40cm', 'Đang bán', 'dam1.webp'),
+('SP02', 'Áo len đan vintage Pullover Ca', 'LH01', '320.000', '250.000', 0, 12, 'Tên sản phẩm: Áo len đan vintage Pullover Cardigan\r\nSize: S - M - L - XL', 'Đang bán', 'a1.png'),
+('SP03', 'HADES BASIC WHITE TEE', 'LH01', '380.000', '250.000', 0, 20, 'Tên sản phẩm: HADES BASIC WHITE TEE\r\nChất liệu: Cotton 2 chiều 100%, thêu\r\nMàu sắc: Trắng\r\nForm áo: Oversize', 'Đang bán', 'hd2.webp'),
+('SP04', 'Đầm Adel Flower Dress', 'LH03', '390.000', '299.000', 0, 15, 'Tên sản phẩm: Đầm Adel Flower Dress\r\nPhong cách: Cơ bản, Hàn Quốc, Retro\r\nSize: S - M - L', 'Đang bán', 'd1.jpg'),
+('SP05', 'Đầm hoa gân tăm', 'LH03', '310.000', '299.000', 0, 15, 'Tên sản phẩm: Đầm hoa gân tăm\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\n', 'Đang bán', 'd2.png'),
+('SP06', 'Checked Sweater len', 'LH01', '390.000', '250.000', 0, 20, 'Tên sản phẩm: Checked Sweater len\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\nSize: S - M - L', 'Đang bán', 'a2.png'),
+('SP07', 'Đầm Jeong suông gân tăm', 'LH03', '385.000', '250.000', 0, 10, 'Tên sản phẩm: Đầm Jeong suông gân tăm\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\nSize: XS - S - M - L - XL', 'Đang bán', 'd3.png'),
+('SP08', 'Quần culottes gân tăm', 'LH02', '310.000', '250.000', 0, 20, 'Tên sản phẩm: Quần culottes gân tăm\r\nKiểu quần: Quần Culottes\r\nSize: S - M - L', 'Đang bán', 'q1.png'),
+('SP09', 'Quần ống suông 2 cúc', 'LH02', '280.000', '140.000', 0, 20, 'Tên sản phẩm: Quần ống suông 2 cúc\r\nMàu sắc: Be - Nâu - Đen\r\nSize : S - M - L', 'Đang bán', 'q2.png');
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `chitietsanpham`
+--
+ALTER TABLE `chitietsanpham`
+  ADD KEY `MaSP` (`MaSP`);
 
 --
 -- Chỉ mục cho bảng `giohang`
@@ -170,6 +230,12 @@ ALTER TABLE `khachhang`
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `chitietsanpham`
+--
+ALTER TABLE `chitietsanpham`
+  ADD CONSTRAINT `chitietsanpham_ibfk_1` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`);
 
 --
 -- Các ràng buộc cho bảng `giohang`
