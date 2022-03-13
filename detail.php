@@ -3,7 +3,7 @@
 <?php 
     $id =$_GET['id'];
     $id1 =$_GET['id1'];
-    $sql = "SELECT * FROM sanpham INNER JOIN chitietsanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE sanpham.MaSP = '$id'";
+    $sql = "SELECT * FROM khachhang,sanpham INNER JOIN chitietsanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE khachhang.MaK='$id1' and sanpham.MaSP = '$id'";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_assoc($result);
@@ -26,7 +26,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/style1.css">
     <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
@@ -94,10 +94,11 @@
                                     </a>
                                     <ul
                                         class="dropdown-menu rounded-0 border-warning border-end-0 border-bottom-0 border-start-0 border-2">
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
+                                        <li><a href="product/all1.php?id=<?php echo $row['MaK'];?> "class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
+                                        <li><a href="product/top1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
+                                        <li><a href="product/bottom1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
+                                        <li><a href="product/skirt1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">SKIRT</a></li>
+                                        <li><a href="product/phukien1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -109,21 +110,28 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 mt-1 d-flex">
-                            <a href="" class="text-decoration-none link-dark">
+                        <div class="col-md-4 mt-1 d-flex">
+                            <a href="user.php?id=<?php echo $row['MaK'];?>" class="text-decoration-none link-dark">
                                 <div class="d-flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                         class="bi bi-people me-2" viewBox="0 0 16 16">
                                         <path
                                             d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
                                     </svg>
-                                    <p class="pt-1" style="font-size:13px">Đăng nhập</p>
+                                    <p class="pt-1" style="font-size:13px"><?php echo $row['TenK']; ?></p>
                                 </div>
                             </a>
                             <a href="" class="text-decoration-none link-dark">
                                 <div class="ms-3">
-                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng ký</p>
+                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng xuất</p>
                                 </div>
+                            </a>
+                            <a href="cart.php?id=<?php echo $id1?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor" class="ms-3 link-dark bi bi-cart4" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                        </svg>
                             </a>
                         </div>
                     </div>
@@ -132,7 +140,7 @@
         </div>
         <div class="mt-2" style="background:#f1f1f1">
             <div class="container">
-                <p class="px-5 ms-2 py-2 text-muted" style="font-size:13px">Trang chủ / Sản phẩm</p>
+                <p class="px-5 ms-2 py-2 text-muted" style="font-size:13px">Trang chủ / Chi tiết sản phẩm</p>
             </div>
         </div>
     </section>
@@ -176,29 +184,33 @@
                     
                         <p class="fw-bold mt-3">Size:</p>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="size" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio1" value="SizeS">
                             <label class="form-check-label fw-bold"
                                 for="inlineRadio1"><?php echo $row['size1']; ?></label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="option2">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeM">
                             <label class="form-check-label fw-bold"
                                 for="inlineRadio2"><?php echo $row['size2']; ?></label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="option2">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeL">
                             <label class="form-check-label fw-bold"
                                 for="inlineRadio2"><?php echo $row['size3']; ?></label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="option2">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeXL">
                             <label class="form-check-label fw-bold"
                                 for="inlineRadio2"><?php echo $row['size4']; ?></label>
                         </div>
                         <div class="selector mt-5">
                             <label class="form-check-label fw-bold" for="inlineRadio2">Số lượng: </label>
                             <input style="width : 50px" name="sluong" type="number" prdchill="5" value="1">
-
+                            <?php
+                                    if(isset($_GET['error'])){
+                                        echo "<p style ='color:red'>{$_GET['error']}</p>";
+                                        }
+                                ?>
                             <div class="col-md-9 mt-3">
                                 <button type="submit" id="add-to-cart"
                                            class="add-to-cart Product button drakpay btn-addtocart btn-warning" name="add">Thêm vào

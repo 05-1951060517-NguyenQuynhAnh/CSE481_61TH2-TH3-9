@@ -1,6 +1,13 @@
-<?php include('../config/database.php'); 
-
+<?php include('config/database.php'); 
 ?>
+<?php 
+    $id =$_GET['id'];
+    $sql = "SELECT * FROM sanpham INNER JOIN chitietsanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE sanpham.MaSP = '$id'";
+    $result = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)>0){
+        $row = mysqli_fetch_assoc($result);
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +25,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/style.css">
-    <title>CSE481 - Sản phẩm</title>
+    <link rel="stylesheet" href="public/style.css">
+    <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
 
@@ -86,11 +93,11 @@
                                     </a>
                                     <ul
                                         class="dropdown-menu rounded-0 border-warning border-end-0 border-bottom-0 border-start-0 border-2">
-                                        <li><a href="all.php "class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
-                                        <li><a href="top.php"class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
-                                        <li><a href="bottom.php"class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
-                                        <li><a href="skirt.php"class="dropdown-item" STYLE="font-size:13px" href="#">SKIRT</a></li>
-                                        <li><a href="phukien.php"class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
+                                        <li><a href="product/all.php"class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
+                                        <li><a href="product/top.php"class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
+                                        <li><a href="product/bottom.php"class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
+                                        <li><a href="product/skirt.php"class="dropdown-item" STYLE="font-size:13px" href="#">SKIRT</a></li>
+                                        <li><a href="product/phukien.php"class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -103,7 +110,7 @@
                             </ul>
                         </div>
                         <div class="col-md-3 mt-1 d-flex">
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="login.php" class="text-decoration-none link-dark">
                                 <div class="d-flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                         class="bi bi-people me-2" viewBox="0 0 16 16">
@@ -113,7 +120,7 @@
                                     <p class="pt-1" style="font-size:13px">Đăng nhập</p>
                                 </div>
                             </a>
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="signup.php" class="text-decoration-none link-dark">
                                 <div class="ms-3">
                                     <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng ký</p>
                                 </div>
@@ -125,86 +132,117 @@
         </div>
         <div class="mt-2" style="background:#f1f1f1">
             <div class="container">
-                <p class="px-5 ms-2 py-2 text-muted" style="font-size:14px">Trang chủ / Sản phẩm</p>
+                <p class="px-5 ms-2 py-2 text-muted" style="font-size:13px">Trang chủ / Chi tiết sản phẩm</p>
             </div>
         </div>
     </section>
     <section>
         <div class="container">
-            <div class="px-5 mt-5">
-                <div class="row d-flex">
-                    <div class="danhmuc col-md-2">
-                        <div class="mt-5">
-                            <h5 class="border-bottom fw-bold pt-2 ">
-                                Bộ lọc sản phẩm</h5>
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Áo</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo sơ mi</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo thun</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo croptop</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo body</a></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Quần</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo vải</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo bò</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo đùi</a></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Váy</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Váy liền</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Chân váy</a></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Phụ kiện</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Nón</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Giày</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="row col-md d-flex">
-                        <h4 class="mt-3 text-center fw-bold" style="color:#d61114;">
-                            Tất cả sản phẩm</h4>
-                        <div class="mt-4 row d-flex px-5">
-                        <?php 
-                    
-                            $sql1 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from sanpham";
-                            $res1 = mysqli_query($conn, $sql1);
-                            $count1 = mysqli_num_rows($res1);
-                            if($count1>0)
-                            {
-                                while($row=mysqli_fetch_assoc($res1))
-                                {
-                                    
-                        ?>
-                        
-                            <div class="card  border-0" style="width: 18rem;">
-                                <img src="../img/<?php echo $row['img']?>" class="card-img-top" alt="...">
-                                <div class="card-body px-0">
-                                    <p class="card-text"><?php echo $row['TenSP']?>.</p>
-                                    <p class="d-inline fw-bold"><?php echo $row['Giagiam']?> VNĐ </p>
-                        
-                                </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
+                        data-bs-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/tsun.webp" class="d-block w-100" alt="...">
                             </div>
-                            <?php
-                                }
-                            }
-                          
-                                ?>
+                            <div class="carousel-item">
+                                <img src="img/tsun2.webp" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/tsun3.webp" class="d-block w-100" alt="...">
+                            </div>
                         </div>
+                        <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="product-title">
+                        <h2 class="text-warning" name="tensp"><?php echo $row['TenSP']; ?></h2>
+                        <span class="text-muted " name="masp">Mã sản phẩm: <?php echo $row['MaSP']; ?></span>
+                    </div>
+                    <hr>
+                    <h4 class="text-warning" name="giaban"><?php echo $row['Giaban']; ?></h4>
+                    
+                        <p class="fw-bold mt-3">Size:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio1" value="SizeS">
+                            <label class="form-check-label fw-bold"
+                                for="inlineRadio1"><?php echo $row['size1']; ?></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeM">
+                            <label class="form-check-label fw-bold"
+                                for="inlineRadio2"><?php echo $row['size2']; ?></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeL">
+                            <label class="form-check-label fw-bold"
+                                for="inlineRadio2"><?php echo $row['size3']; ?></label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeXL">
+                            <label class="form-check-label fw-bold"
+                                for="inlineRadio2"><?php echo $row['size4']; ?></label>
+                        </div>
+                        <div class="selector mt-5">
+                            <label class="form-check-label fw-bold" for="inlineRadio2">Số lượng: </label>
+                            <input style="width : 50px" name="sluong" type="number" prdchill="5" value="1">
+                            <div class="col-md-9 mt-3">
+                                <a href="login.php">
+                                    <button  id="add-to-cart"
+                                               class="add-to-cart Product button drakpay btn-addtocart btn-warning" name="add">Thêm vào
+                                               giỏ</button>
+                                </a>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="product-description mt-5">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active text-warning" id="home-tab" data-bs-toggle="tab"
+                            data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">MÔ
+                            TẢ</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-warning" id="contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                            aria-selected="false">HƯỚNG DẪN MUA
+                            HÀNG</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="mt-3">
+                            <h6><?php echo $row['TenSP']; ?></h6>
+                            <p><?php echo $row['mota1']; ?></p>
+                            <p><?php echo $row['mota2']; ?></p>
+                            <p><?php echo $row['mota3']; ?></p>
+                            <p class="mt-3"> Sản phẩm áo thun với chất liệu 100% cotton co giãn 2 chiều đem đến cho
+                                người mặc sự thoáng mát và thoải mái nhất khi mặc.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <p>Chọn sản phẩm -> Chọn size sản phẩm -> Thêm vào giỏ hàng -> Thanh toán</p>
+                        <p>(Trong trường hợp các bạn mua nhiều sản phẩm, các bạn thêm từng sản phẩm vào giỏ hàng, sau
+                            khi đã đủ sản phẩm và số lượng , các bạn vui lòng kiểm tra thật kỹ giỏ hàng và ấn THANH
+                            TOÁN)</p>
+
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <section style="background:#fffeae;">
         <div class="container">
@@ -260,7 +298,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3 me-5">
-                    <img class="img-fluid" src="../img/1.png" alt="">
+                    <img class="img-fluid" src="img/1.png" alt="">
                 </div>
                 <div class="col">
                     <div class="ms-5 mt-3 ps-5">

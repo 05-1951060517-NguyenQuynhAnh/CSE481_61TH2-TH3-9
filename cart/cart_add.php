@@ -7,18 +7,20 @@
         $sluong = $_POST['sluong'];
         $id =$_GET['id'];
         $id1 =$_GET['id1'];
+        $size = $_POST['size'];
         require_once '../config/database.php';
         if(!$conn){
             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
         }
         // Bước 02: Thực hiện truy vấn
-        $sql = "INSERT INTO giohang (MaSP,MaK,Soluong) VALUES('$id1','$id','$sluong')";
+        $sql = "INSERT INTO giohang (MaSP,MaK,Soluong,size) VALUES('$id1','$id','$sluong','$size')";
         $number = mysqli_query($conn,$sql);
 
         if($number > 0){
          header("location: ../detail.php?id=$id1&id1=$id"); //Chuyển hướng về Trang quản trị
         }else{
-            header("location: error.php"); //Chuyển hướng, hiển thị thông báo lỗi
+            $error = "Sản phẩm này đã có trong giỏ hàng";
+            header("location:../detail.php?id=$id1&id1=$id&error=$error"); 
         }
     
         mysqli_close($conn);

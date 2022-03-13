@@ -1,5 +1,13 @@
 <?php include('config/database.php'); 
 ?>
+<?php 
+    $id =$_GET['id'];
+    $sql = "SELECT *,giohang.soluong*sanpham.Giaban as thanhtien FROM khachhang,giohang INNER JOIN sanpham ON sanpham.MaSP = giohang.MaSP WHERE khachhang.MaK='$id' ";
+    $result = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)>0){
+        $row = mysqli_fetch_assoc($result);
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +25,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="public/style1.css">
     <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
@@ -100,22 +108,44 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 mt-1 d-flex">
-                            <a href="" class="text-decoration-none link-dark">
+                        <div class="col-md-4 mt-1 d-flex">
+                            <a href="user.php?id=<?php echo $row['MaK'];?>" class="text-decoration-none link-dark">
                                 <div class="d-flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                         class="bi bi-people me-2" viewBox="0 0 16 16">
                                         <path
                                             d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
                                     </svg>
-                                    <p class="pt-1" style="font-size:13px">Đăng nhập</p>
+                                    <p class="pt-1" style="font-size:13px"><?php
+                                            
+                                            $conn = mysqli_connect('localhost','root','','cse481');
+                                            if(!$conn){
+                                                die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
+                                            }
+                                            // Bước 02: Thực hiện truy vấn
+                                            $sql5 = "SELECT *FROM khachhang WHERE MaK='$id' ";
+                                            $result5 = mysqli_query($conn,$sql5);
+                                            // Bước 03: Xử lý kết quả truy vấn
+                                            if(mysqli_num_rows($result5) > 0){
+                                                while($row = mysqli_fetch_assoc($result5)){
+                                            ?>
+                                                                    <tr>
+                                                                        <td><?php echo $row['TenK']; ?></td>
+                                                                    </tr>
+                                                                    <?php
+                                                }
+                                            }
+                                            // Bước 04: Đóng kết nối Database Server
+                             ?>
+                                    </p>
                                 </div>
                             </a>
                             <a href="" class="text-decoration-none link-dark">
                                 <div class="ms-3">
-                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng ký</p>
+                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng xuất</p>
                                 </div>
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -123,7 +153,7 @@
         </div>
         <div class="mt-2" style="background:#f1f1f1">
             <div class="container">
-                <p class="px-5 ms-2 py-2 text-muted" style="font-size:13px">Trang chủ / Sản phẩm</p>
+                <p class="px-5 ms-2 py-2 text-muted" style="font-size:13px">Trang chủ / Giỏ hàng</p>
             </div>
         </div>
     </section>
@@ -143,21 +173,65 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+          
+          $sql2 = "SELECT *,giohang.soluong*sanpham.Giaban as thanhtien FROM khachhang,giohang INNER JOIN sanpham ON sanpham.MaSP = giohang.MaSP WHERE khachhang.MaK='$id'";
+          $res2 = mysqli_query($conn, $sql2);
+          $count2 = mysqli_num_rows($res2);
+          if($count2>0)
+          {
+              while($row=mysqli_fetch_assoc($res2))
+              {
+      ?>
                         <tr>
+                            <form action="process_update_cart.php?id=<?php echo $row['MaSP']; ?>&id1=<?php echo $row['MaK']; ?>"method="post">
                             <td class="">
-                                <img class="d-inline" width="100px" src="img/ao1.webp" alt="">
-                                <p class="d-inline ms-3">VÁy công sở</p>
+                                <img class="d-inline" width="100px" src="img/<?php echo $row['img']; ?>" alt="">
+                                <p class="d-inline ms-3"><?php echo $row['TenSP']; ?></p>
                             </td>
-                            <td class="pt-5">Size S</td>
-                            <td class="pt-5">Size S</td>
+                            <td class="pt-5">
+                            <select style="width:80px" name="size">
+                            <option value="SizeM">Size M</option>
+                            <option value="SizeL">Size L</option>
+                            <option value="SizeXL">Size XL</option>
+                            <option value="<?php echo $row['size']; ?>" selected="selected"><?php echo $row['size']; ?></option>             
+                        </select></td>
+                            <td class="pt-5"><?php echo $row['Giaban']; ?></td>
                             <td class="pt-5"><input style="width : 50px" name="sluong" type="number" prdchill="5"
-                                    value="1"></td>
-                            <td class="pt-5 " style="color:red">345.000đ</td>
-                            <td class="pt-5">Size S</td>
-
-                        </tr>
+                                    value="<?php echo $row['soluong']; ?>"></td>
+                            <td class="pt-5 " style="color:red"><?php echo $row['thanhtien']; ?>đ</td>
+                            <td class="pt-5">
+                            <button type="submit" name="btnsua" style="background:white"
+                        class="border-0">
                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                <path
+                                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                            </svg>
+                   
+                    </button>
+                                <a
+                                    href="process_delete_cart.php?id=<?php echo $row['MaSP']; ?>&id1=<?php echo $row['MaK']; ?>">
 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="ms-3 bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </a>
+                            </td>
+                            </form>
+                        </tr>
+
+                        <?php
+                                }
+                            }           
+                            ?>
 
                     </tbody>
                 </table>
@@ -169,32 +243,74 @@
             <div class="px-5 ">
 
                 <div class="row mt-5">
-        
+
                     <div class="col-md-6">
-                        
+
                     </div>
-                    <div style="bottom:0px;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;"class="px-5 py-3 col-md-6">
-                        <p class="fs-4 fw-bold">Tổng thanh toán (10 sản phẩm): </p>
+                    <div style="bottom:0px;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;"
+                        class="px-5 py-3 col-md-6">
+                        <p class="fs-4 fw-bold">Tổng thanh toán: </p>
                         <div class="d-flex">
-                            
+
                             <p>Số lượng: </p>
-                            
-                            <p class="ms-2">4 </p>
+
+                            <p class="ms-2"><?php
+                
+                $conn = mysqli_connect('localhost','root','','cse481');
+                if(!$conn){
+                    die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
+                }
+                // Bước 02: Thực hiện truy vấn
+                $sql1 = "SELECT sum(soluong) as tong_sluong FROM giohang  WHERE MaK='$id'  ";
+                $result1 = mysqli_query($conn,$sql1);
+                // Bước 03: Xử lý kết quả truy vấn
+                if(mysqli_num_rows($result1) > 0){
+                    while($row = mysqli_fetch_assoc($result1)){
+                    echo $row['tong_sluong']; 
+                              
+                    }
+                }
+                // Bước 04: Đóng kết nối Database Server
+                mysqli_close($conn);
+                ?>
+                            </p>
                         </div>
                         <div class="d-flex">
-                            
+
                             <p>Tổng tiền: </p>
-                            
-                            <p style="color:red" class="ms-2">64523VNĐ </p>
+
+                            <p style="color:red" class="ms-2"><?php
+                
+                $conn = mysqli_connect('localhost','root','','cse481');
+                if(!$conn){
+                    die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
+                }
+                // Bước 02: Thực hiện truy vấn
+                $sql2 = "SELECT sum(giohang.soluong*sanpham.Giaban) as tongtien FROM khachhang,giohang INNER JOIN sanpham ON sanpham.MaSP = giohang.MaSP WHERE khachhang.MaK='$id' ";
+                $result2 = mysqli_query($conn,$sql2);
+                // Bước 03: Xử lý kết quả truy vấn
+                if(mysqli_num_rows($result2) > 0){
+                    while($row = mysqli_fetch_assoc($result2)){
+     
+                                
+                    echo $row['tongtien'];
+                               
+                    }
+                }
+                // Bước 04: Đóng kết nối Database Server
+                mysqli_close($conn);
+                ?> VNĐ
+                            </p>
                         </div>
                         <a href=""><button style="font-size:14px;color:white;"
-                                class="mt-3 fw-bold col-md-12 btn btn-lg btn-block bg-danger" name="">Đặt hàng</button></a>
+                                class="mt-3 fw-bold col-md-12 btn btn-lg btn-block bg-danger" name="">Đặt
+                                hàng</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

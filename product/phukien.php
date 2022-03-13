@@ -174,11 +174,11 @@
                     </div>
                     <div class="row col-md d-flex">
                         <h4 class="mt-3 text-center fw-bold" style="color:#d61114;">
-                            Tất cả sản phẩm</h4>
+                            Các mẫu quần của shop.</h4>
                         <div class="mt-4 row d-flex px-5">
                         <?php 
                     
-                            $sql1 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from sanpham";
+                            $sql1 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from loaihang,sanpham where loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH04' ";
                             $res1 = mysqli_query($conn, $sql1);
                             $count1 = mysqli_num_rows($res1);
                             if($count1>0)
