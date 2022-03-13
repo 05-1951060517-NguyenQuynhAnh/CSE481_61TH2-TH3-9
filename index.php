@@ -161,8 +161,10 @@ if(!isset($_SESSION['isLoginOK'])){
             <div class="mx-5">
 
                 <div class="mt-4 owl-carousel">
+                    
                     <?php 
-                                $sql2 = "SELECT * FROM sanpham";
+          
+                                $sql2 = "SELECT * FROM khachhang,sanpham";
                                 $res2 = mysqli_query($conn, $sql2);
                                 $count2 = mysqli_num_rows($res2);
                                 if($count2>0)
@@ -174,7 +176,7 @@ if(!isset($_SESSION['isLoginOK'])){
                         <div class="card me-0 border-0" style="width: 18rem;">
                             <img src="img/<?php echo $row['img'];?>" class="card-img-top" alt="...">
                             <div class="overlay d-flex">
-                                <a href="">
+                                <a href="detail.php?id=<?php echo $row['MaSP']?>&id1=<?php echo $row['MaK']?>">
                                     <div  class="detail rounded-circle">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                             fill="currentColor" style="margin:11px" class="bi bi-card-heading"
@@ -204,7 +206,7 @@ if(!isset($_SESSION['isLoginOK'])){
                         <div class="card border-0 me-0" style="width: 18rem;">
                             <img src="img/dam1.webp" class="card-img-top" alt="...">
                             <div class="overlay d-flex">
-                                <a href="">
+                                <a href="detail.php?id=<?php echo $row['MaSP']?>">
                                     <div  class="detail rounded-circle">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                             fill="currentColor" style="margin:11px" class="bi bi-card-heading"
