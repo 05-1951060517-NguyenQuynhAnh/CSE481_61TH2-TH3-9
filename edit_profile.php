@@ -168,18 +168,21 @@
                                 <div class="pt-1 pb-3 mx-3">
                                     <label style="font-size:13px" class="fw-bold" for="txtten">Họ và tên</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtten"
-                                        placeholder="<?php echo $row['TenK'];?>">
+                                        placeholder="Nhập họ và tên"value="<?php echo $row['TenK'];?>">
+
+
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtngaysinh">Ngày sinh</label>
-                                    <input class="col-md-12 ps-3  border py-2 rounded-3" type="date" name="txtngaysinh" >
+                                    <input class="col-md-12 ps-3  border py-2 rounded-3" type="date" value="<?php echo $row['Ngaysinh'];?>" name="txtngaysinh" >
+
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtdiachi">Địa chỉ</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtdiachi"
-                                        placeholder="<?php echo $row['Diachi'];?>">
+                                        placeholder="Nhập địa chị"value="<?php echo $row['Diachi'];?>">
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtname">Email</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtemail"
-                                        placeholder="<?php echo $row['email'];?>">
+                                        placeholder="Nhập email"value="<?php echo $row['email'];?>">
                                         <label style="font-size:13px" class="mt-2 fw-bold" for="txtsdt">Số điện thoại</label>
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtsdt"
-                                        placeholder="<?php echo $row['SĐT'];?>">
+                                        placeholder="Nhập số điện thoại"value="<?php echo $row['SĐT'];?>">
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtgender">Giới tính</label>
                                     <input class="mt-4 ms-1" id="radio1" type="radio" value="Nữ" name="txtgender">
                                     <label for="radio1">Nữ</label>
