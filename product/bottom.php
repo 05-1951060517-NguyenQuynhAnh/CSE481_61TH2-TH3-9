@@ -143,8 +143,7 @@
                 <div class="row d-flex  px-4 mt-5">
                     <?php 
                     
-                            $sql1 = "SELECT *, khachhang.MaK,sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from khachhang,loaihang INNER JOIN sanpham
-                            ON  loaihang.MaLH=sanpham.MaLH where loaihang.MaLH='LH02' and khachhang.MaK='$id'";
+                            $sql1 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from loaihang,sanpham where loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH02'";
                             $res1 = mysqli_query($conn, $sql1);
                             $count1 = mysqli_num_rows($res1);
                             if($count1>0)

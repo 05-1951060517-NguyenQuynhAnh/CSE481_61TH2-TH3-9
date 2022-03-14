@@ -171,7 +171,7 @@
                         <span class="text-muted " name="masp">Mã sản phẩm: <?php echo $row['MaSP']; ?></span>
                     </div>
                     <hr>
-                    <h4 class="text-warning" name="giaban"><?php echo $row['Giaban']; ?></h4>
+                    <h4 class="text-warning" name="giaban"><?php echo $row['Giaban']; ?> VNĐ</h4>
                     
                         <p class="fw-bold mt-3">Size:</p>
                         <div class="form-check form-check-inline">
