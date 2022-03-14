@@ -2,7 +2,7 @@
 ?>
 <?php 
     $id =$_GET['id'];
-    $sql = "SELECT * FROM sanpham INNER JOIN chitietsanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE sanpham.MaSP = '$id'";
+    $sql = "SELECT *,sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam FROM sanpham INNER JOIN chitietsanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE sanpham.MaSP = '$id'";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_assoc($result);
@@ -171,7 +171,7 @@
                         <span class="text-muted " name="masp">Mã sản phẩm: <?php echo $row['MaSP']; ?></span>
                     </div>
                     <hr>
-                    <h4 class="text-warning" name="giaban"><?php echo $row['Giaban']; ?> VNĐ</h4>
+                    <h4 class="text-warning" name="giaban"><?php echo $row['Giagiam']; ?> VNĐ</h4>
                     
                         <p class="fw-bold mt-3">Size:</p>
                         <div class="form-check form-check-inline">
