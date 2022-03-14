@@ -41,7 +41,7 @@
                                 ?>
                             
                                 <hr style="height:0.45px">
-                                <a href="">
+                                <a href="signup.php">
                                     <div class="mx-auto p-1  text-center">
                                         <button style="font-size:14px;color:white;background:#42b72a"
                                             class="mt-3 fw-bold col-md-6 btn btn-lg btn-block" name="">Tạo tài

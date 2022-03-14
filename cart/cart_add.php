@@ -17,7 +17,8 @@
         $number = mysqli_query($conn,$sql);
 
         if($number > 0){
-         header("location: ../detail.php?id=$id1&id1=$id"); //Chuyển hướng về Trang quản trị
+            $error = "Thêm thành công";
+            header("location:../detail.php?id=$id1&id1=$id&error=$error"); 
         }else{
             $error = "Sản phẩm này đã có trong giỏ hàng";
             header("location:../detail.php?id=$id1&id1=$id&error=$error"); 

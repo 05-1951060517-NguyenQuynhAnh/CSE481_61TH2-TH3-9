@@ -39,6 +39,14 @@
                                     placeholder="Email">
                                 <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="text" name="matkhau"
                                     placeholder="Mật khẩu">
+                                    <div class="mt-2 ms-2">
+
+                                    <?php
+                                    if(isset($_GET['error'])){
+                                        echo "<p style ='color:red'>{$_GET['error']}</p>";
+                                        }
+                                ?>
+                                    </div>
                                 <div class="mx-auto p-1  text-center">
                                     <button style="color:white;background:#42b72a"
                                         class="mt-3 mb-2 fw-bold btn btn-lg btn-block" type="submit"
