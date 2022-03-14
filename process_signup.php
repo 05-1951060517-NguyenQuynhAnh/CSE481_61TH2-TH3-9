@@ -14,11 +14,15 @@
     }
 
     $partten = "/^[A-Za-z0-9_.]{6,32}@([a-zA-Z0-9]{2,12})(.[a-zA-Z]{2,12})+$/";
-    if(!preg_match($partten ,$email, $matchs))
+    if(!preg_match($partten ,$email, $matchs)){
     $error = "Nhập sai định dạng email";
     header("location:signup.php?error=$error"); 
-    exit;
-
+    exit;}
+    if (strlen($matkhau) < 6)
+    { $error = "Mật khẩu quá ngắn, hãy thử với mật khẩu khác an toàn hơn.";
+        header("location:signup.php?error=$error");
+        exit;
+    }
 
     
     require_once 'config/database.php';
