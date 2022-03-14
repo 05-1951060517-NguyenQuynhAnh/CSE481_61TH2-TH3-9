@@ -159,7 +159,7 @@
                     <div style="background:white" class="border col-md px-5">
 
                         <div class="mt-3">
-                            <p class="mb-0 fs-4">Sử hồ sơ của tôi</p>
+                            <p class="mb-0 fs-4">Sửa hồ sơ của tôi</p>
                             <p class="" style="font-size:14px">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                         </div>
                         <hr>
@@ -167,10 +167,10 @@
                             <div class="col-md-8">
                                 <div class="pt-1 pb-3 mx-3">
                                     <label style="font-size:13px" class="fw-bold" for="txtpass">Mật khẩu cũ</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="password" name="txtpass"
-                                        placeholder="Mật khẩu cũ">
+                                    <input class="form-control col-md-12 ps-3 border py-2 rounded-3" type="password" name="txtpass"
+                                        placeholder="Mật khẩu cũ" required autofocus>
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtpassnew">Mật khẩu mới</label>
-                                    <input class="col-md-12 ps-3  border py-2 rounded-3" type="password" name="txtpassnew" placeholder="Mật khẩu mới" >
+                                    <input class=" form-control col-md-12 ps-3  border py-2 rounded-3" type="password" name="txtpassnew" placeholder="Mật khẩu mới" required autofocus >
                                 </div>
                             </div>
                             <button type="submit" name="" style="background: #e68e12;"
