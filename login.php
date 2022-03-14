@@ -41,11 +41,10 @@
                                 ?>
                             
                                 <hr style="height:0.45px">
-                                <a href="signup.php">
-                                    <div class="mx-auto p-1  text-center">
-                                        <button style="font-size:14px;color:white;background:#42b72a"
-                                            class="mt-3 fw-bold col-md-6 btn btn-lg btn-block" name="">Tạo tài
-                                            khoản mới</button>
+                                <a class="text-decoration-none"href="signup.php">
+                                    <div class="mt-4 col-md-6 py-2 fw-bold  mx-auto p-1 rounded text-center"style="font-size:14px;color:white;background:#42b72a">
+                                        Tạo tài
+                                            khoản mới
                                     </div>
                                 </a>
                             </div>
