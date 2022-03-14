@@ -49,7 +49,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="search.php" method="post">
+                            <form action="search1.php?id=<?php echo $row['MaK'];?>" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -83,7 +83,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="index1.php?id=<?php echo $row['email'];?>">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -102,10 +102,10 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="huongdan1.php?id=<?php echo $row['MaK'];?>">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a class="pe-1 nav-link link-dark" style="font-size:15px"href="size1.php?id=<?php echo $row['MaK'];?>">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
@@ -134,8 +134,10 @@
             <div class="px-5 pt-5">
                 <div class="row px-5">
                     <div class="col-md-2">
-                        <p class="fw-bold"><?php echo $row['TenK'];?></p>
-                        <a href="edit_profile.php" class="text-decoration-none link-dark">
+                        <a class="text-decoration-none"href="user.php?id=<?php echo $row['MaK'];?>">
+                            <p class="mt-2 fw-bold link-dark"><?php echo $row['TenK'];?></p>
+                    </a>
+                        <a href="#" class="text-decoration-none link-dark">
                             <div class="py-2 ">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="d-inline bi bi-pen-fill" viewBox="0 0 16 16">
@@ -145,7 +147,7 @@
                                 <p class="d-inline pt-1" style="font-size:14px">Sửa hồ sơ</p>
                             </div>
                         </a>
-                        <a href="login.php" class="text-decoration-none link-dark">
+                        <a href="edit_pass.php?id=<?php echo $row['MaK'];?>" class="text-decoration-none link-dark">
                             <div class="py-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-incognito" viewBox="0 0 16 16">

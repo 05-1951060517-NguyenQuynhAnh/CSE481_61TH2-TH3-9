@@ -83,7 +83,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="index1.php?id=<?php echo $row['email'];?>">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -102,10 +102,10 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="huongdan1.php?id=<?php echo $row['MaK'];?>">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a class="pe-1 nav-link link-dark" style="font-size:15px"href="size1.php?id=<?php echo $row['MaK'];?>">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
@@ -171,7 +171,7 @@
                                 <p class="text-muted">Ngày sinh</p>
                                 <p class="text-muted">Địa chỉ</p>
                                 <p class="text-muted">Số điện thoại</p>
-                                <p class="text-muted">Email</p>
+                                <p class="text-muted mb-4">Email</p>
                             </div>
                             <div class="col-md mt-3">
                                 <p class=""><?php echo $row['TenK'];?></p>
