@@ -173,6 +173,14 @@
                                     <input class=" form-control col-md-12 ps-3  border py-2 rounded-3" type="password" name="txtpassnew" placeholder="Mật khẩu mới" required autofocus >
                                 </div>
                             </div>
+                            <div class="mt-2 ms-3">
+
+                                    <?php
+                                    if(isset($_GET['error'])){
+                                        echo "<p style ='color:red'>{$_GET['error']}</p>";
+                                        }
+                                ?>
+                            </div>
                             <button type="submit" name="" style="background: #e68e12;"
                         class="link-light fw-bold btn mt-3 ms-5 mb-4 px-3">Save</button>
                         </form>

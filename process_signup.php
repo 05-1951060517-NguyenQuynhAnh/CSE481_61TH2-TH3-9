@@ -13,11 +13,11 @@
         exit;
     }
 
-$partten = "/^[A-Za-z0-9_.]{6,32}@([a-zA-Z0-9]{2,12})(.[a-zA-Z]{2,12})+$/";
-if(!preg_match($partten ,$email, $matchs))
-$error = "Nhập sai định dạng email";
-header("location:signup.php?error=$error"); 
-exit;
+    $partten = "/^[A-Za-z0-9_.]{6,32}@([a-zA-Z0-9]{2,12})(.[a-zA-Z]{2,12})+$/";
+    if(!preg_match($partten ,$email, $matchs))
+    $error = "Nhập sai định dạng email";
+    header("location:signup.php?error=$error"); 
+    exit;
 
 
     
