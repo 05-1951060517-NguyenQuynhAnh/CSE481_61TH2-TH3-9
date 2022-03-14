@@ -1,5 +1,13 @@
 <?php include('config/database.php'); 
 ?>
+<?php 
+    $id =$_GET['id'];
+    $sql1 = "SELECT * FROM khachhang, sanpham where khachhang.MaK='$id' ";
+    $result1 = mysqli_query($conn,$sql1);
+    if(mysqli_num_rows($result1)>0){
+        $row = mysqli_fetch_assoc($result1);
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +49,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="search.php" method="post">
+                            <form action="search1.php?id=<?php echo $row['MaK'];?>" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -64,20 +72,10 @@
         </div>
     </div>
     <section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="row mt-2">
-
-                        <img src="img/icon.png" alt="" class="img-fluid">
-                    </div>
-                    <div class="px-4 row">
-                        <p class="px-2 blockquote-footer text-center" style=" word-spacing: 0.5px;">“Đừng chạy theo xu
-                            hướng. Đừng khiến bản thân lệ
-                            thuộc vào thời trang. Hãy để chính mình là người quyết định bản thân sẽ mặc gì cũng như sẽ
-                            sống ra sao”.</p>
-                        <p class="px-2 blockquote-footer d-flex justify-content-end">Versace</p>
-                    </div>
+        <div class="container">
+            <div class="row px-5">
+                <div class="col-md-3 ">
+                    <img src="img/logo-hcn.png" alt="" class="mt-2 ms-2 img-fluid">
                 </div>
                 <div class="col-md ps-0 mt-4">
                     <div class="row">
@@ -85,7 +83,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="index1.php?id=<?php echo $row['email'];?>">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -95,239 +93,61 @@
                                     </a>
                                     <ul
                                         class="dropdown-menu rounded-0 border-warning border-end-0 border-bottom-0 border-start-0 border-2">
-                                        <li><a href="product/all.php" class="dropdown-item" STYLE="font-size:13px"
-                                                href="#">Shop All </a></li>
-                                        <li><a href="product/top.php" class="dropdown-item" STYLE="font-size:13px"
-                                                href="#">TOP</a></li>
-                                        <li><a href="product/bottom.php" class="dropdown-item" STYLE="font-size:13px"
-                                                href="#">BOTTOM</a></li>
-                                        <li><a href="product/skirt.php" class="dropdown-item" STYLE="font-size:13px"
-                                                href="#">SKIRT</a></li>
-                                        <li><a href="product/phukien.php" class="dropdown-item" STYLE="font-size:13px"
-                                                href="#">ACCESSORIES</a>
+                                        <li><a href="product/all1.php?id=<?php echo $row['MaK'];?> "class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
+                                        <li><a href="product/top1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
+                                        <li><a href="product/bottom1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
+                                        <li><a href="product/skirt1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">SKIRT</a></li>
+                                        <li><a href="product/phukien1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a href="huongdan.php"class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="huongdan1.php?id=<?php echo $row['MaK']; ?>">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a href="size.php"class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 mt-1 d-flex">
-                            <a href="login.php" class="text-decoration-none link-dark">
+                        <div class="col-md-4 mt-1 d-flex">
+                            <a href="user.php?id=<?php echo $row['MaK'];?>" class="text-decoration-none link-dark">
                                 <div class="d-flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                         class="bi bi-people me-2" viewBox="0 0 16 16">
                                         <path
                                             d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
                                     </svg>
-                                    <p class="pt-1" style="font-size:13px">Đăng nhập</p>
+                                    <p class="pt-1" style="font-size:13px"><?php echo $row['TenK']; ?></p>
                                 </div>
                             </a>
-                            <a href="signup.php" class="text-decoration-none link-dark">
+                            <a href="logout.php" class="text-decoration-none link-dark">
                                 <div class="ms-3">
-                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng ký</p>
+                                    <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng xuất</p>
                                 </div>
+                            </a>
+                            <a href="cart.php?id=<?php echo $row['MaK']?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            fill="currentColor" class="ms-3 link-dark bi bi-cart4" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                        </svg>
                             </a>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row mt-4 pe-4">
-                        <img src="img/bia.jpg" alt="" class="pe-0 img-fluid">
-                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section>
-        <div class="container">
-
-            <div class="mt-5">
-                <h4 class="text-center fw-bold" style="color:#d61114;">
-                    SẢN PHẨM MỚI</h4>
-                <p class="text-center" STYLE="font-size:13px">Mỗi tuần của hàng đề có sản phẩm mới.</p>
-            </div>
-            <div class="mx-5">
-
-                <div class="mt-4 owl-carousel">
-
-                    <?php 
-          
-                                $sql2 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam FROM sanpham ORDER BY Ngaynhap DESC LIMIT 8";
-                                $res2 = mysqli_query($conn, $sql2);
-                                $count2 = mysqli_num_rows($res2);
-                                if($count2>0)
-                                {
-                                    while($row=mysqli_fetch_assoc($res2))
-                                    {
-                            ?>
-                    <div class="item ">
-                        <div class="card me-0 border-0" style="width: 18rem;">
-                            <img src="img/<?php echo $row['img'];?>" class="img-fluid card-img-top" alt="...">
-                            <div class="overlay d-flex">
-                                <a href="detail1.php?id=<?php echo $row['MaSP']?>">
-                                    <div class="detail rounded-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            fill="currentColor" style="margin:18.5px" class="bi bi-card-heading"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                            <path
-                                                d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
-                                        </svg>
-                                    </div>
-                                </a>
-
-                            </div>
-                            <div class="card-body px-0">
-                                <p class="card-text"><?php echo $row['TenSP']; ?></p>
-                                <p class="fw-bold"><?php echo $row['Giagiam']; ?> VNĐ</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <?php
-                                }
-                            }           
-                            ?>
-                </div>
-
+        <div class="mt-2" style="background:#f1f1f1">
+            <div class="container">
+                <p class="px-5 ms-2 py-2 text-muted mb-0" style="font-size:13px">Trang chủ / Bảng size</p>
             </div>
         </div>
     </section>
-    <section>
-        <div class="container">
-                    <?php 
-
-        $sql4 = "SELECT count(MaSP) as soao FROM loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH01'";
-            $result4 = mysqli_query($conn,$sql4);
-            if(mysqli_num_rows($result4)>0){
-            $row = mysqli_fetch_assoc($result4);
-            }
-        ?>
-            <div class="row mx-5 mt-4">
-                <div class="col px-0 me-4">
-                    <a href="product/top.php">
-                        <img class="img-fluid rounded-3" src="img/ao.png" alt="">
-                    </a>
-                    <div class="a">
-                        <p style="color:#666666" class="fw-bold mb-1">Áo</p>
-                        <p style="font-size:14px" class="fw-bold mb-0"><?php echo $row['soao']; ?> sản phẩm</p>
-                    </div>
-                </div>
-                        <?php 
-
-        $sql5 = "SELECT count(MaSP) as soquan FROM loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH02'";
-            $result5= mysqli_query($conn,$sql5);
-            if(mysqli_num_rows($result5)>0){
-            $row = mysqli_fetch_assoc($result5);
-            }
-        ?>
-                <div class="col px-0 me-4">
-                    <a href="product/bottom.php">
-                        <img class="img-fluid rounded-3" src="img/quan.png" alt="">
-                    </a>
-                    <div class="a">
-                        <p style="color:#666666" class="fw-bold mb-1">Quần</p>
-                        <p style="font-size:14px" class="fw-bold mb-0"><?php echo $row['soquan']; ?> sản phẩm</p>
-                    </div>
-                </div>
-                        <?php 
-
-        $sql6 = "SELECT count(MaSP) as sovay FROM loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH03'";
-            $result6= mysqli_query($conn,$sql6);
-            if(mysqli_num_rows($result6)>0){
-            $row = mysqli_fetch_assoc($result6);
-            }
-        ?>
-                <div class="col  px-0 me-4">
-                    <a href="product/skirt.php">
-                        <img class="img-fluid rounded-3" src="img/vay.png" alt="">
-                    </a>
-                    <div class="a">
-                        <p style="color:#666666" class="fw-bold mb-1">Váy</p>
-                        <p style="font-size:14px" class="fw-bold mb-0"><?php echo $row['sovay']; ?> sản phẩm</p>
-                    </div>
-                </div>
-                        <?php 
-
-        $sql7 = "SELECT count(MaSP) as sophukien FROM loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH04'";
-            $result7= mysqli_query($conn,$sql7);
-            if(mysqli_num_rows($result7)>0){
-            $row = mysqli_fetch_assoc($result7);
-            }
-        ?>
-                <div class="col px-0">
-                    <a href="product/phukien.php">
-                        <img class="img-fluid rounded-3" src="img/phukien.png" alt="">
-                    </a>
-                    <div class="a">
-                        <p style="color:#666666" class="fw-bold mb-1">Phụ kiện</p>
-                        <p style="font-size:14px" class="fw-bold mb-0"><?php echo $row['sophukien']; ?> sản phẩm</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-
-            <div class="mt-5">
-                <h4 class="text-center fw-bold" style="color:#d61114;">
-                    Đang giảm giá</h4>
-                <p class="text-center" STYLE="font-size:13px">Sản phẩm chỉ còn một vài Size và không được sản xuất lại
-                    sau khi bán hết.</p>
-            </div>
-            <div class="mx-5">
-                <div class="mt-4 owl-carousel">
-                    <?php 
-          
-          $sql2 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam FROM sanpham WHERE Tylegiamgia != ''";
-          $res2 = mysqli_query($conn, $sql2);
-          $count2 = mysqli_num_rows($res2);
-          if($count2>0)
-          {
-              while($row=mysqli_fetch_assoc($res2))
-              {
-            ?>
-                    <div class="item ">
-                        <div class="card me-0 border-0" style="width: 18rem;">
-                            <img src="img/<?php echo $row['img'];?>" class="img-fluid card-img-top" alt="...">
-                            <div class="overlay d-flex">
-                                <a href="detail1.php?id=<?php echo $row['MaSP']?>">
-                                    <div class="detail rounded-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            fill="currentColor" style="margin:18.5px" class="bi bi-card-heading"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                                            <path
-                                                d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
-                                        </svg>
-                                    </div>
-                                </a>
-
-                            </div>
-                            <div class="card-body px-0">
-                                <p class="card-text"><?php echo $row['TenSP']; ?></p>
-                                <p class="d-inline fw-bold"><?php echo $row['Giagiam']; ?> VNĐ</p>
-                                <p class="d-inline ms-3 fw-bold text-muted text-decoration-line-through">
-                                    <?php echo $row['Giaban']; ?> VNĐ </p>
-                            </div>
-                        </div>
-
-                    </div>
-                            <?php
-                }
-            }           
-            ?>
-
-                </div>
-            </div>
+    <section class="pb-5" style="font-family:'Arial';background:#fafafa">
+        <div class="container mx-auto text-center">
+          <img src="img/size.jpg" alt="" class="mt-4 rounded border">
+          <p class="mt-3 mb-0 link-danger">Đây là số đo cơ bản của những mẫu váy bên shop.</p>
+          <p class="link-danger">Để biết size chi tiết từng sản phẩm bạn hay vào xem chi tiết từng sản phẩm.</p>
         </div>
     </section>
     <section style="background:#fffeae;">
@@ -425,27 +245,6 @@
         </div>
         <p class="text-center py-3 mb-0" style="background:#f7d232;">Copyright © 2022 All rights reserved</p>
     </section>
-    <!--Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous"></script>
-    <!-- Owl Carousel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <!-- custom JS code after importing jquery and owl -->
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $(".owl-carousel").owlCarousel();
-    });
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        items: 4,
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 4000,
-        autoplayHoverPause: true
-    });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

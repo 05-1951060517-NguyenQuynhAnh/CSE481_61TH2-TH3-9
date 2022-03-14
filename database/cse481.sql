@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 13, 2022 lúc 05:05 PM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 8.0.13
+-- Thời gian đã tạo: Th3 14, 2022 lúc 07:19 AM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -68,7 +68,7 @@ INSERT INTO `chitietsanpham` (`MaSP`, `size1`, `size2`, `size3`, `size4`, `img1`
 CREATE TABLE `giohang` (
   `MaSP` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaK` int(11) NOT NULL,
-  `Soluong` int(11) DEFAULT NULL,
+  `soluong` int(11) DEFAULT NULL,
   `size` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -76,8 +76,8 @@ CREATE TABLE `giohang` (
 -- Đang đổ dữ liệu cho bảng `giohang`
 --
 
-INSERT INTO `giohang` (`MaSP`, `MaK`, `Soluong`, `size`) VALUES
-('SP01', 1, 2, '');
+INSERT INTO `giohang` (`MaSP`, `MaK`, `soluong`, `size`) VALUES
+('SP06', 1, 7, 'SizeL');
 
 -- --------------------------------------------------------
 
@@ -151,29 +151,30 @@ CREATE TABLE `sanpham` (
   `MaSP` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `TenSP` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `MaLH` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Giaban` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Gianhap` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Tylegiamgia` float DEFAULT NULL,
+  `Giaban` double(3,3) DEFAULT NULL,
+  `Gianhap` decimal(18,3) DEFAULT NULL,
+  `Tylegiamgia` double(2,2) DEFAULT NULL,
   `Soluong` int(11) DEFAULT NULL,
   `Mota` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Trangthai` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `img` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `img` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ngaynhap` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MaLH`, `Giaban`, `Gianhap`, `Tylegiamgia`, `Soluong`, `Mota`, `Trangthai`, `img`) VALUES
-('SP01', 'Set đầm màu xanh trẻ trung', 'LH03', '349.000', '299.000', 0, 12, 'Tên sản phẩm: Áo khoác nắp túi\nMàu sắc: Xanh\nSố đo ngực: 86cm\nSố đo dài tay: 57cm\nSố đo cửa tay: 20cm\nSố đo vai: 34cm\nChiều dài áo: 40cm', 'Đang bán', 'dam1.webp'),
-('SP02', 'Áo len đan vintage Pullover Ca', 'LH01', '320.000', '250.000', 0, 12, 'Tên sản phẩm: Áo len đan vintage Pullover Cardigan\r\nSize: S - M - L - XL', 'Đang bán', 'a1.png'),
-('SP03', 'HADES BASIC WHITE TEE', 'LH01', '380.000', '250.000', 0, 20, 'Tên sản phẩm: HADES BASIC WHITE TEE\r\nChất liệu: Cotton 2 chiều 100%, thêu\r\nMàu sắc: Trắng\r\nForm áo: Oversize', 'Đang bán', 'hd2.webp'),
-('SP04', 'Đầm Adel Flower Dress', 'LH03', '390.000', '299.000', 0, 15, 'Tên sản phẩm: Đầm Adel Flower Dress\r\nPhong cách: Cơ bản, Hàn Quốc, Retro\r\nSize: S - M - L', 'Đang bán', 'd1.jpg'),
-('SP05', 'Đầm hoa gân tăm', 'LH03', '310.000', '299.000', 0, 15, 'Tên sản phẩm: Đầm hoa gân tăm\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\n', 'Đang bán', 'd2.png'),
-('SP06', 'Checked Sweater len', 'LH01', '390.000', '250.000', 0, 20, 'Tên sản phẩm: Checked Sweater len\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\nSize: S - M - L', 'Đang bán', 'a2.png'),
-('SP07', 'Đầm Jeong suông gân tăm', 'LH03', '385.000', '250.000', 0, 10, 'Tên sản phẩm: Đầm Jeong suông gân tăm\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\nSize: XS - S - M - L - XL', 'Đang bán', 'd3.png'),
-('SP08', 'Quần culottes gân tăm', 'LH02', '310.000', '250.000', 0, 20, 'Tên sản phẩm: Quần culottes gân tăm\r\nKiểu quần: Quần Culottes\r\nSize: S - M - L', 'Đang bán', 'q1.png'),
-('SP09', 'Quần ống suông 2 cúc', 'LH02', '280.000', '140.000', 0, 20, 'Tên sản phẩm: Quần ống suông 2 cúc\r\nMàu sắc: Be - Nâu - Đen\r\nSize : S - M - L', 'Đang bán', 'q2.png');
+INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MaLH`, `Giaban`, `Gianhap`, `Tylegiamgia`, `Soluong`, `Mota`, `Trangthai`, `img`, `Ngaynhap`) VALUES
+('SP01', 'Set đầm màu xanh trẻ trung', 'LH03', 349.000, '299.000', 0.15, 12, 'Tên sản phẩm: Áo khoác nắp túi\nMàu sắc: Xanh\nSố đo ngực: 86cm\nSố đo dài tay: 57cm\nSố đo cửa tay: 20cm\nSố đo vai: 34cm\nChiều dài áo: 40cm', 'Đang bán', 'dam1.webp', '2022-01-11'),
+('SP02', 'Áo len đan vintage Pullover Ca', 'LH01', 320.000, '250.000', 0.00, 12, 'Tên sản phẩm: Áo len đan vintage Pullover Cardigan\r\nSize: S - M - L - XL', 'Đang bán', 'a1.png', '2022-01-11'),
+('SP03', 'HADES BASIC WHITE TEE', 'LH01', 380.000, '250.000', 0.10, 20, 'Tên sản phẩm: HADES BASIC WHITE TEE\r\nChất liệu: Cotton 2 chiều 100%, thêu\r\nMàu sắc: Trắng\r\nForm áo: Oversize', 'Đang bán', 'hd2.webp', '2022-01-21'),
+('SP04', 'Đầm Adel Flower Dress', 'LH03', 390.000, '299.000', 0.10, 15, 'Tên sản phẩm: Đầm Adel Flower Dress\r\nPhong cách: Cơ bản, Hàn Quốc, Retro\r\nSize: S - M - L', 'Đang bán', 'd1.jpg', '2022-01-25'),
+('SP05', 'Đầm hoa gân tăm', 'LH03', 310.000, '299.000', 0.00, 15, 'Tên sản phẩm: Đầm hoa gân tăm\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\n', 'Đang bán', 'd2.png', '2022-01-23'),
+('SP06', 'Checked Sweater len', 'LH01', 390.000, '250.000', 0.15, 20, 'Tên sản phẩm: Checked Sweater len\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\nSize: S - M - L', 'Đang bán', 'a2.png', '2022-01-04'),
+('SP07', 'Đầm Jeong suông gân tăm', 'LH03', 385.000, '250.000', 0.10, 10, 'Tên sản phẩm: Đầm Jeong suông gân tăm\r\nPhong cách: Cơ bản, Boho, Hàn Quốc, Tối giản, Retro\r\nSize: XS - S - M - L - XL', 'Đang bán', 'd3.png', '2022-01-16'),
+('SP08', 'Quần culottes gân tăm', 'LH02', 310.000, '250.000', 0.15, 20, 'Tên sản phẩm: Quần culottes gân tăm\r\nKiểu quần: Quần Culottes\r\nSize: S - M - L', 'Đang bán', 'q1.png', '2022-02-21'),
+('SP09', 'Quần ống suông 2 cúc', 'LH02', 280.000, '140.000', 0.00, 20, 'Tên sản phẩm: Quần ống suông 2 cúc\r\nMàu sắc: Be - Nâu - Đen\r\nSize : S - M - L', 'Đang bán', 'q2.png', '2022-01-15');
 
 --
 -- Chỉ mục cho các bảng đã đổ

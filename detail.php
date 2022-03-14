@@ -26,7 +26,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="public/style1.css">
+    <link rel="stylesheet" href="public/style.css">
     <title>CSE481 - Tiệm thời trang</title>
     <link rel="shortcut icon" href="img/1.png">
 </head>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="" method="GET">
+                            <form action="search1.php?id=<?php echo $row['MaK'];?>" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -84,7 +84,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="index1.php?id=<?php echo $row['email'];?>">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -103,10 +103,10 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="huongdan1.php?id=<?php echo $row['MaK']; ?>">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a class="pe-1 nav-link link-dark" style="font-size:15px" href="size1.php?id=<?php echo $row['MaK']; ?>">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
@@ -121,7 +121,7 @@
                                     <p class="pt-1" style="font-size:13px"><?php echo $row['TenK']; ?></p>
                                 </div>
                             </a>
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="logout.php" class="text-decoration-none link-dark">
                                 <div class="ms-3">
                                     <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng xuất</p>
                                 </div>
@@ -147,18 +147,18 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 px-5">
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
                         data-bs-interval="false">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner mt-3">
                             <div class="carousel-item active">
-                                <img src="img/tsun.webp" class="d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img1']; ?>"  style="height:600px"class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/tsun2.webp" class="d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img2']; ?>"  style="height:600px"class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/tsun3.webp" class="d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img3']; ?>"  style="height:600px"class="img-fluid d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button"

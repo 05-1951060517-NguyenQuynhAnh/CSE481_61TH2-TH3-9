@@ -49,7 +49,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="" method="GET">
+                            <form action="search1.php?id=<?php echo $row['MaK'];?>" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -83,7 +83,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="index1.php?id=<?php echo $row['email'];?>">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -93,18 +93,19 @@
                                     </a>
                                     <ul
                                         class="dropdown-menu rounded-0 border-warning border-end-0 border-bottom-0 border-start-0 border-2">
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
-                                        <li><a class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
+                                        <li><a href="product/all1.php?id=<?php echo $row['MaK'];?> "class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
+                                        <li><a href="product/top1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
+                                        <li><a href="product/bottom1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
+                                        <li><a href="product/skirt1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">SKIRT</a></li>
+                                        <li><a href="product/phukien1.php?id=<?php echo $row['MaK'];?>"class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="huongdan1.php?id=<?php echo $row['MaK']; ?>">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a class="pe-1 nav-link link-dark" style="font-size:15px" href="size1.php?id=<?php echo $row['MaK']; ?>">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
@@ -140,7 +141,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="logout.php" class="text-decoration-none link-dark">
                                 <div class="ms-3">
                                     <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng xuất</p>
                                 </div>
@@ -186,7 +187,7 @@
                         <tr>
                             <form action="process_update_cart.php?id=<?php echo $row['MaSP']; ?>&id1=<?php echo $row['MaK']; ?>"method="post">
                             <td class="">
-                                <img class="d-inline" width="100px" src="img/<?php echo $row['img']; ?>" alt="">
+                                <img class="d-inline" width="100px" height="100px"src="img/<?php echo $row['img']; ?>" alt="">
                                 <p class="d-inline ms-3"><?php echo $row['TenSP']; ?></p>
                             </td>
                             <td class="pt-5">
@@ -194,6 +195,7 @@
                             <option value="SizeM">Size M</option>
                             <option value="SizeL">Size L</option>
                             <option value="SizeXL">Size XL</option>
+                            <option value="SizeS">Size S</option>
                             <option value="<?php echo $row['size']; ?>" selected="selected"><?php echo $row['size']; ?></option>             
                         </select></td>
                             <td class="pt-5"><?php echo $row['Giaban']; ?></td>

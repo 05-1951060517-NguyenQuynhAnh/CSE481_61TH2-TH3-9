@@ -49,7 +49,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="" method="GET">
+                            <form action="search.php" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -83,7 +83,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="index.php">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -102,10 +102,10 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a href="huongdan.php"class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a href="size.php"class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
@@ -138,19 +138,19 @@
     </section>
     <section>
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row px-5">
+                <div class="col-md-6 px-5">
                     <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
                         data-bs-interval="false">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner mt-3">
                             <div class="carousel-item active">
-                                <img src="img/tsun.webp" class="d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img1']; ?>" style="height:600px"class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/tsun2.webp" class="d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img2']; ?>" style="height:600px" class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/tsun3.webp" class="d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img3']; ?>" style="height:600px" class="img-fluid d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button"

@@ -84,3 +84,7 @@ visibility: hidden;
   color: #080808;
   overflow: hidden;
 }
+.card img{
+  width: 288px;
+  height: 288px;
+}

@@ -18,9 +18,9 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <title>CSE481 - Sản phẩm</title>
-    <link rel="shortcut icon" href="img/1.png">
+    <link rel="shortcut icon" href="../img/1.png">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                             <div class="">
-                                <form action="" method="GET">
+                            <form action="../search.php" method="post">
                                     <div class="pt-2 ms-5 d-flex">
                                         <input class="py-2 rounded-start" type="text"
                                             style="border:none;padding-left: 10px;font-size:12px;width:250px"
@@ -68,7 +68,7 @@
         <div class="container">
             <div class="row px-5">
                 <div class="col-md-3 ">
-                    <img src="img/logo-hcn.png" alt="" class="mt-2 ms-2 img-fluid">
+                    <img src="../img/logo-hcn.png" alt="" class="mt-2 ms-2 img-fluid">
                 </div>
                 <div class="col-md ps-0 mt-4">
                     <div class="row">
@@ -76,7 +76,7 @@
                             <ul class="nav justify-content-center">
                                 <li class="nav-item fw-bold ">
                                     <a class="nav-link link-dark pe-1" style="font-size:15px" aria-current="page"
-                                        href="#">TRANG CHỦ</a>
+                                        href="../index.php">TRANG CHỦ</a>
                                 </li>
                                 <li class="nav-item fw-bold">
                                     <a style="font-size:15px" class="pe-1 nav-link dropdown-toggle link-dark" href="#"
@@ -86,24 +86,29 @@
                                     </a>
                                     <ul
                                         class="dropdown-menu rounded-0 border-warning border-end-0 border-bottom-0 border-start-0 border-2">
-                                        <li><a href="all.php "class="dropdown-item" STYLE="font-size:13px" href="#">Shop All </a></li>
-                                        <li><a href="top.php"class="dropdown-item" STYLE="font-size:13px" href="#">TOP</a></li>
-                                        <li><a href="bottom.php"class="dropdown-item" STYLE="font-size:13px" href="#">BOTTOM</a></li>
-                                        <li><a href="skirt.php"class="dropdown-item" STYLE="font-size:13px" href="#">SKIRT</a></li>
-                                        <li><a href="phukien.php"class="dropdown-item" STYLE="font-size:13px" href="#">ACCESSORIES</a>
+                                        <li><a href="all.php " class="dropdown-item" STYLE="font-size:13px"
+                                                href="#">Shop All </a></li>
+                                        <li><a href="top.php" class="dropdown-item" STYLE="font-size:13px"
+                                                href="#">TOP</a></li>
+                                        <li><a href="bottom.php" class="dropdown-item" STYLE="font-size:13px"
+                                                href="#">BOTTOM</a></li>
+                                        <li><a href="skirt.php" class="dropdown-item" STYLE="font-size:13px"
+                                                href="#">SKIRT</a></li>
+                                        <li><a href="phukien.php" class="dropdown-item" STYLE="font-size:13px"
+                                                href="#">ACCESSORIES</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
+                                    <a href="../huongdan.php"class=" pe-1 nav-link link-dark" style="font-size:15px" href="#">HƯỚNG DẪN</a>
                                 </li>
                                 <li class="nav-item fw-bold">
-                                    <a class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
+                                    <a href="../size.php"class="pe-1 nav-link link-dark" style="font-size:15px">BẢNG SIZE</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-3 mt-1 d-flex">
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="../login.php" class="text-decoration-none link-dark">
                                 <div class="d-flex">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                         class="bi bi-people me-2" viewBox="0 0 16 16">
@@ -113,7 +118,7 @@
                                     <p class="pt-1" style="font-size:13px">Đăng nhập</p>
                                 </div>
                             </a>
-                            <a href="" class="text-decoration-none link-dark">
+                            <a href="../signup.php" class="text-decoration-none link-dark">
                                 <div class="ms-3">
                                     <p class="pt-1 fw-bold link-primary" style="font-size:13px">Đăng ký</p>
                                 </div>
@@ -132,53 +137,14 @@
     <section>
         <div class="container">
             <div class="px-5 mt-5">
-                <div class="row d-flex">
-                    <div class="danhmuc col-md-2">
-                        <div class="mt-5">
-                            <h5 class="border-bottom fw-bold pt-2 ">
-                                Bộ lọc sản phẩm</h5>
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Áo</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo sơ mi</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo thun</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo croptop</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo body</a></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Quần</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo vải</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo bò</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Áo đùi</a></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Váy</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Váy liền</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Chân váy</a></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="text-nowrap list-unstyled">
-                                <li><a class="text-decoration-none link-dark fw-bold fs-5" href="">Phụ kiện</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Nón</a></li>
-                                <li class="py-1"><a class="text-decoration-none link-dark" href="">Giày</a></li>
-                            </ul>
-                        </div>
 
-                    </div>
-                    <div class="row col-md d-flex">
-                        <h4 class="mt-3 text-center fw-bold" style="color:#d61114;">
-                            Các mẫu quần của shop.</h4>
-                        <div class="mt-4 row d-flex px-5">
-                        <?php 
+                <h4 class="mt-3 text-center fw-bold" style="color:#d61114;">
+                    Các mẫu quần của shop</h4>
+                <div class="row d-flex  px-4 mt-5">
+                    <?php 
                     
-                            $sql1 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from loaihang,sanpham where loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH02' ";
+                            $sql1 = "SELECT *, khachhang.MaK,sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam from khachhang,loaihang INNER JOIN sanpham
+                            ON  loaihang.MaLH=sanpham.MaLH where loaihang.MaLH='LH02' and khachhang.MaK='$id'";
                             $res1 = mysqli_query($conn, $sql1);
                             $count1 = mysqli_num_rows($res1);
                             if($count1>0)
@@ -187,24 +153,40 @@
                                 {
                                     
                         ?>
-                        
-                            <div class="card  border-0" style="width: 18rem;">
-                                <img src="../img/<?php echo $row['img']?>" class="card-img-top" alt="...">
-                                <div class="card-body px-0">
-                                    <p class="card-text"><?php echo $row['TenSP']?>.</p>
-                                    <p class="d-inline fw-bold"><?php echo $row['Giagiam']?> VNĐ </p>
-                        
+                    <div class="card me-0 border-0" style="width: 18rem;">
+                        <img src="../img/<?php echo $row['img'];?>" class="img-fluid card-img-top" alt="...">
+                        <div class="overlay d-flex">
+                            <a href="../detail1.php?id=<?php echo $row['MaSP']?>">
+                                <div class="detail rounded-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                        style="margin:18.5px" class="bi bi-card-heading" viewBox="0 0 16 16">
+                                        <path
+                                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                        <path
+                                            d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                                    </svg>
                                 </div>
-                            </div>
-                            <?php
+                            </a>
+
+                        </div>
+                        <div class="card-body px-0">
+                            <p class="card-text"><?php echo $row['TenSP']; ?></p>
+                            <p class="d-inline fw-bold"><?php echo $row['Giagiam']; ?> VNĐ</p>
+
+                        </div>
+                    </div>
+
+
+                    <?php
                                 }
                             }
                           
                                 ?>
-                        </div>
-                    </div>
                 </div>
+
+
             </div>
+        </div>
     </section>
     <section style="background:#fffeae;">
         <div class="container">
