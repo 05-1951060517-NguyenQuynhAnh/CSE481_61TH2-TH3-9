@@ -186,9 +186,9 @@
                                     <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="txtsdt"
                                         placeholder="Nhập số điện thoại"value="<?php echo $row['SĐT'];?>">
                                     <label style="font-size:13px" class="mt-2 fw-bold" for="txtgender">Giới tính</label>
-                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="Nữ" name="txtgender">
+                                    <input class="mt-4 ms-1" id="radio1" type="radio" value="Nữ" name="txtgender" <?php echo $row['Gioitinh'] == 'Nữ'?'checked':''?>>
                                     <label for="radio1">Nữ</label>
-                                    <input class="ms-3 " id="radio2" type="radio" value="Nam" name="txtgender">
+                                    <input class="ms-3 " id="radio2" type="radio" value="Nam" name="txtgender"<?php echo $row['Gioitinh'] == 'Nam'?'checked':''?>>
                                     <label for="radio2">Nam</label>
                                 </div>
                             </div>

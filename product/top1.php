@@ -75,7 +75,7 @@ $id =$_GET['id'];
         <div class="container">
             <div class="row px-5">
                 <div class="col-md-3 ">
-                    <img src="img/logo-hcn.png" alt="" class="mt-2 ms-2 img-fluid">
+                    <img src="../img/logo-hcn.png" alt="" class="mt-2 ms-2 img-fluid">
                 </div>
                 <div class="col-md ps-0 mt-4">
                     <div class="row">

@@ -216,7 +216,7 @@
         <div class="container">
             <?php 
 
-        $sql4 = "SELECT *,count(MaSP) as soao FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH01'";
+        $sql4 = "SELECT *,count(MaSP) as soao FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH01' and khachhang.email='$id'";
             $result4 = mysqli_query($conn,$sql4);
             if(mysqli_num_rows($result4)>0){
             $row = mysqli_fetch_assoc($result4);
@@ -234,7 +234,7 @@
                 </div>
                 <?php 
 
-        $sql5 = "SELECT *,count(MaSP) as soquan FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH02'";
+        $sql5 = "SELECT *,count(MaSP) as soquan FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH02' and khachhang.email='$id'";
             $result5= mysqli_query($conn,$sql5);
             if(mysqli_num_rows($result5)>0){
             $row = mysqli_fetch_assoc($result5);
@@ -251,7 +251,7 @@
                 </div>
                 <?php 
 
-        $sql6 = "SELECT *,count(MaSP) as sovay FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH03'";
+        $sql6 = "SELECT *,count(MaSP) as sovay FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH03' and khachhang.email='$id'";
             $result6= mysqli_query($conn,$sql6);
             if(mysqli_num_rows($result6)>0){
             $row = mysqli_fetch_assoc($result6);
@@ -268,7 +268,7 @@
                 </div>
                 <?php 
 
-        $sql7 = "SELECT *,count(MaSP) as sophukien FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH04'";
+        $sql7 = "SELECT *,count(MaSP) as sophukien FROM khachhang,loaihang,`sanpham` WHERE loaihang.MaLH=sanpham.MaLH and loaihang.MaLH='LH04' and khachhang.email='$id'";
             $result7= mysqli_query($conn,$sql7);
             if(mysqli_num_rows($result7)>0){
             $row = mysqli_fetch_assoc($result7);

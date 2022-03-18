@@ -37,7 +37,7 @@
                                 <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date" name="ngaysinh">
                                 <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="text" name="email"
                                     placeholder="Email">
-                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="text" name="matkhau"
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="matkhau"
                                     placeholder="Mật khẩu">
                                     <div class="mt-2 ms-2">
 
