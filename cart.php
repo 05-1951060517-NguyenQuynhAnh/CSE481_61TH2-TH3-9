@@ -198,7 +198,7 @@
                             <option value="SizeS">Size S</option>
                             <option value="<?php echo $row['size']; ?>" selected="selected"><?php echo $row['size']; ?></option>             
                         </select></td>
-                            <td class="pt-5"><?php echo number_format($row['Giagiam']); ?></td>
+                            <td class="pt-5"><?php echo number_format($row['Giaban']); ?></td>
                             <td class="pt-5"><input style="width : 50px" name="sluong" type="number" prdchill="5"
                                     value="<?php echo $row['soluong']; ?>"></td>
                             <td class="pt-5 " style="color:red"><?php echo $row['thanhtien']; ?>đ</td>
