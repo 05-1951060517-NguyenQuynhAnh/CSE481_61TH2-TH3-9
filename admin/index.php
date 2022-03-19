@@ -1,3 +1,6 @@
+<?php include('../config/database.php'); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-    <link rel="stylesheet" href="style/style1.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>Admin</title>
     <link rel="shortcut icon" href="../img/1.png">
 </head>
@@ -75,17 +75,6 @@
                         <span class="nav_name">Loại hàng</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="donhang/donhang.php" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="bi bi-newspaper nav_icon" viewBox="0 0 16 16">
-                            <path
-                                d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
-                            <path
-                                d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
-                        </svg>
-                        <span class="nav_name">Đơn hàng</span>
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
                     <a href="sanpham/sanpham.php" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
@@ -94,24 +83,6 @@
                                 d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5Zm0 1H7.5v3h-6l2.25-3ZM8.5 4V1h3.75l2.25 3h-6ZM15 5v10H1V5h14Z" />
                         </svg>
                         <span class="nav_name">Sản phẩm</span>
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
-                    <a href="baocao/baocao.php" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="bi bi-graph-up-arrow nav_icon" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                        </svg>
-                        <span class="nav_name">Báo cáo</span>
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
-                    <a href="khachhang/khachhang.php" class="d-flex nav_link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="bi bi-person nav_icon" viewBox="0 0 16 16">
-                            <path
-                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                        </svg>
-                        <span class="text-nowrap nav_name">Khách hàng</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
                     <div class="nav_links">
@@ -134,23 +105,136 @@
     </div>
     <div class="height-100">
         <section class="p-5">
-            <div class="d-flex">
+            <div class="d-flex mb-5">
+                <?php 
+                $sql = "SELECT sum(Soluong) as sl_ton FROM `sanpham`";
+                    $result = mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0){
+                    $row = mysqli_fetch_assoc($result);
+                    }
+                ?>
+                <div class="card border-0 me-4"
+                    style="border-radius:10px;width: 17rem;background-image: linear-gradient(230deg, #759bff, #843cf6);">
+                    <div class="p-4 card-body">
+                        <h5 class="ps-1 card-title link-light mb-0">SL Tồn kho</h5>
+                        <div class="ps-1 d-flex mb-2">
+                            <div class="col-md-9">
+                                <p class="card-text fs-3 link-light fw-bold"><?php echo $row['sl_ton']; ?></p>
 
-                <div class="card" style="background-image: linear-gradient(230deg, #759bff, #843cf6);">
-                    <div class="card_body">
-    dsdsđ
+                            </div>
+                            <div class="col-md">
+
+                                <svg style="color:rgba(255, 255, 255, 0.4);" xmlns="http://www.w3.org/2000/svg"
+                                    width="50" height="50" fill="currentColor" class="mt-4 bi bi-boxes"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-    
                 </div>
-                <div class="card" style="background-image: linear-gradient(230deg, #759bff, #843cf6);">
-                    <div class="card_body">
-    dsdsđ
+                <?php 
+                $sql1 = "SELECT sum(MaHD) as hoadon FROM `hoadon`";
+                    $result1 = mysqli_query($conn,$sql1);
+                    if(mysqli_num_rows($result1)>0){
+                    $row = mysqli_fetch_assoc($result1);
+                    }
+                ?>
+                <div class="card border-0 me-4"
+                    style="border-radius:10px;width: 18rem;background-image: linear-gradient(230deg, #fc5286, #fbaaa2);}">
+                    <div class="p-4 card-body">
+                        <h5 class="ps-1 card-title link-light mb-0">Hóa đơn</h5>
+                        <div class="ps-1 d-flex mb-2">
+                            <div class="col-md-9">
+                                <p class="card-text fs-3 link-light fw-bold"><?php echo $row['hoadon']; ?></p>
+                            </div>
+                            <div class="col-md">
+                                <svg style="color:rgba(255, 255, 255, 0.4);"
+                                    xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                                    class="mt-4 bi bi-calendar-heart" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5ZM1 14V4h14v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Zm7-6.507c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-    
                 </div>
+                <?php 
+                $sql2 = "SELECT sum(Dongia) as doanhthu FROM chitiethoadon";
+                    $res = mysqli_query($conn,$sql2);
+                    if(mysqli_num_rows($res)>0){
+                    $row = mysqli_fetch_assoc($res);
+                    }
+                ?>
+                <div class="card border-0 "
+                    style="border-radius:10px;width: 18rem;background-image: linear-gradient(230deg, #ffc480, #ff763b);}">
+                    <div class="p-4 card-body">
+                        <h5 class="ps-1 card-title link-light mb-0">Doanh Thu</h5>
+                        <div class="ps-1 d-flex mb-2">
+                            <div class="col-md-9">
+                                <div class="div">
+                                    <p class="text-nowrap card-text fs-3 link-light fw-bold">
+                                        <?php echo number_format($row['doanhthu']); ?></p>
+                                    <p class="card-text link-light">VNĐ</p>
+                                </div>
+
+                            </div>
+                            <div class="col-md">
+                                <svg style="color:rgba(255, 255, 255, 0.4);"
+                                    xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                                    class="mt-4 ms-1 bi bi-cash-coin" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
+                                    <path
+                                        d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
+                                    <path
+                                        d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
+                                    <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
+                                </svg>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                $sql3 = "SELECT sum(Dongia)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loinhuan FROM chitiethoadon,sanpham WHERE chitiethoadon.MaSP=sanpham.MaSP";
+                    $res1 = mysqli_query($conn,$sql3);
+                    if(mysqli_num_rows($res1)>0){
+                    $row = mysqli_fetch_assoc($res1);
+                    }
+                ?>
+                <div class="card border-0 ms-4"
+                    style="border-radius:10px;width: 18rem;background-image: linear-gradient(230deg, #0e4cfd, #6a8eff);">
+                    <div class="p-4 card-body">
+                        <h5 class="ps-1 card-title link-light mb-0">Lợi nhuận</h5>
+                        <div class="ps-1 d-flex mb-2">
+                        <div class="col-md-9">
+                        <div class="div">
+                                <p class="card-text fs-3 link-light fw-bold"><?php echo number_format($row['loinhuan']); ?></p>
+                                <p class="card-text link-light">VNĐ</p>
+                            </div>
+
+                            </div>
+                            <div class="col-md">
+                            <svg style="color:rgba(255, 255, 255, 0.4);"
+                                xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                                class="mt-4 bi bi-coin" viewBox="0 0 16 16">
+                                <path
+                                    d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                            </svg>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="">
-                <canvas id="myChart" style="height:280px" class="bg-white"></canvas>
+                <canvas id="myChart" style="height:280px;border-radius:10px;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;" class="p-3 bg-white"></canvas>
             </div>
         </section>
     </div>
@@ -194,23 +278,43 @@
     </script>
     <script>
     const labels = [
+        '',
         'January',
         'February',
         'March',
         'April',
         'May',
         'June',
+        'July',
+        'Agust',
+        'September',
+        'October',
+        'November',
+        'December'
     ];
 
     const data = {
         labels: labels,
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            label: 'Doanh thu theo tháng',
+            backgroundColor: '#33cb82',
+            borderColor: '#33cb82',
+            data: [0, <?php 
+          
+          $sql4 = "SELECT sum(Dongia) as don FROM chitiethoadon,hoadon WHERE chitiethoadon.MaHD=hoadon.MaHD GROUP BY month(Ngaymua)";
+          $res2 = mysqli_query($conn, $sql4);
+          $count2 = mysqli_num_rows($res2);
+          if($count2>0)
+          {
+              while($row=mysqli_fetch_assoc($res2))
+              {
+      ?><?php echo $row['don']?>, <?php
+    }
+}           
+?>],
         }]
     };
+    
 
     const config = {
         type: 'line',

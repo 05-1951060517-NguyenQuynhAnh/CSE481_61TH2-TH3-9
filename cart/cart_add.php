@@ -1,5 +1,4 @@
 
-
 <?php
     // addEmployee.php TRUYỀN DỮ LIỆU SANG
     // process-add-Employee: NHẬN DỮ LIỆU TỪ admin.php gửi sang
