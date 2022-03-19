@@ -48,28 +48,6 @@
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="../loaihang/loaihang.php" class="d-flex nav_link ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-layers nav_icon" aria-hidden="true">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                            <polyline points="2 17 12 22 22 17"></polyline>
-                            <polyline points="2 12 12 17 22 12"></polyline>
-                        </svg>
-                        <span class="nav_name">Loại hàng</span> 
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
-                    <a href="../donhang/donhang.php" class="d-flex nav_link ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="bi bi-newspaper nav_icon" viewBox="0 0 16 16">
-                            <path
-                                d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
-                            <path
-                                d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
-                        </svg>
-                        <span class="nav_name">Đơn hàng</span>
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
                     <a href="" class="d-flex nav_link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
@@ -80,28 +58,10 @@
                         <span class="nav_name">Sản phẩm</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../baocao/baocao.php" class="d-flex nav_link ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="bi bi-graph-up-arrow nav_icon" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                        </svg>
-                        <span class="nav_name">Báo cáo</span> 
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
-                    <a href="../khachhang/khachhang.php" class="d-flex nav_link ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="bi bi-person nav_icon" viewBox="0 0 16 16">
-                            <path
-                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                        </svg>
-                        <span class="text-nowrap nav_name">Khách hàng</span> 
-                        <i class="nav_icon2 bi bi-chevron-right"></i>
-                    </a>
                     <div class="nav_links">
                         <span class="nav_names">PAGES</span>
                     </div>
-                    <a href="#" class="d-flex nav_link">
+                    <a href="../../index.php" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                             class="bi bi-journal nav_icon" viewBox="0 0 16 16">
                             <path
