@@ -6,18 +6,14 @@
     $email = $_POST['email'];
     $matkhau = $_POST['matkhau'];
     
-     
-    require_once 'config/database.php';
+    $conn = mysqli_connect('localhost','root','','cse481');
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
-    
-    $sql = "INSERT INTO account (hovaten,chucvu,sodt_coquan,sodt_didong,email,ma_donvi) VALUES('$hoVaTen','$chucVu','$soMayBan','$soDiDong','$email','$maDonVi')";
-
+    $sql = "INSERT INTO account (id,hoten,gioitinh,ngaysinh,email,password) VALUES('$id','$hovaten','$gioitinh','$ngaysinh','$email','$matkhau')";
     $number = mysqli_query($conn,$sql);
-
     if($number > 0){
-     header("location: admin.php"); //Chuyển hướng về Trang quản trị
+     header("location: taikhoan.php"); //Chuyển hướng về Trang quản trị
     }else{
         header("location: error.php"); //Chuyển hướng, hiển thị thông báo lỗi
     }
