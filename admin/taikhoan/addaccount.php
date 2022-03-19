@@ -79,65 +79,63 @@
     </div>
 
     <div class="height-100">
-        <div class="container px-md-4">
-            <h4 class="text-center text-danger mt-5">DANH SÁCH NHÂN VIÊN </h4>
-            <div>
-                <a class="btn btn-warning" href="addaccount.php">Thêm tài khoản</a>
+    <section style="background:#fffeae; height:700px">
+        <div class="container p-3">
+            <div class="mt-2 ms-3 row">
+                <div class="login col-md-12 d-flex justify-content-center">
+                    <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:500px;border-radius:8px"
+                        class="">
+                        <p class="text-center text-warning ps-4 mt-3 fs-2 mb-0 fw-bold ">THÊM TÀI KHOẢN</p>
+                        <hr>
+                        <form class="form-addaccount" action="process_addaccount.php" method="post">
+                            <div class="pt-1 pb-3 mx-3">
+                                <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id"
+                                    placeholder="Mã nhân viên">
+                                <input class="col-md-12 mt-3 ps-3 border py-2 rounded-3" type="text" name="hovaten"
+                                    placeholder="Họ và tên">
+                                <input class="mt-4 ms-1" id="radio1" type="radio" value="Nữ" name="gioitinh">
+                                <label for="radio1">Nữ</label>
+                                <input class="ms-3 " id="radio2" type="radio" value="Nam" name="gioitinh">
+                                <label for="radio2">Nam</label>
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date" name="ngaysinh">
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="text" name="email"
+                                    placeholder="Email">
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="matkhau"
+                                    placeholder="Mật khẩu">
+                                    <div class="mt-2 ms-2">
+                                    <?php
+                                    if(isset($_GET['error'])){
+                                        echo "<p style ='color:red'>{$_GET['error']}</p>";
+                                        }
+                                ?>
+                                    </div>
+                                <div class="mx-auto p-1  text-center">
+                                    <button style="color:white;"
+                                        class="mt-3 mb-2 fw-bold btn btn-lg btn-block btn-warning" type="submit"
+                                        name="btnaddaccount">Thêm tài khoản</button>
+                                </div>
+                            </div>
+                        </form>
+                        <a class="text-decoration-none link-dark" style="font-size:13px"href="taikhoan.php">
+                        <div class="mb-3 ms-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" fill="currentColor" class="ms-3 d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg> 
+                                <p class="ms-2 d-inline">Quay lại</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Mã nhân viên</th>
-                    <th scope="col">Họ và tên</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Chức vụ</th>
-                    <th scope="col">Lương</th>
-                    <th scope="col">Sửa</th>
-                    <th scope="col">Xóa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $conn = mysqli_connect('localhost','root','','cse481');
-                    if(!$conn){
-                        die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
-                    }
-                    $sql = "SELECT * FROM account";
-                    $result = mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_assoc($result)){
-                ?>
-                <tr>
-                    <th scope="row"><?php echo $row['id']; ?></th>
-                    <td><?php echo $row['hoten']; ?></td>
-                    <td><?php echo $row['ngaysinh']; ?></td>
-                    <td><?php echo $row['gioitinh']; ?></td>
-                    <td><?php echo $row['diachi']; ?></td>
-                    <td><?php echo $row['sđt']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['password']; ?></td>
-                    <td><?php echo $row['chucvu']; ?></td>
-                    <td><?php echo $row['luong']; ?></td>
-                    <td><a href="update_account.php?id=<?php echo $row['id']; ?>"><i
-                                class="bi bi-pencil-square"></i></a></td>
-                    <td><a href="delete_account.php?id=<?php echo $row['id']; ?>"><i
-                                class="bi bi-trash"></i></a></td>
-                </tr>
-                <?php
-                        }
-                    }
-                    mysqli_close($conn);
-                ?>
-
-
-            </tbody>
-        </table>
         </div>
+
+    </section>
+        
     </div>
     <?php include('../template/footer.php'); 
 ?>
+
+
+
