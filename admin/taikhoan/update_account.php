@@ -97,36 +97,41 @@
             <div class="container p-3">
                 <div class="mt-2 ms-3 row">
                     <div class="login col-md-12 d-flex justify-content-center">
-                        <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:500px;border-radius:8px"
+                        <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:1200px;border-radius:8px"
                             class="">
                             <p class="text-center text-warning ps-4 mt-3 fs-2 mb-0 fw-bold ">SỬA THÔNG TIN NHÂN VIÊN</p>
                             <hr>
-                            <form class="form-addaccount" action="process_updateaccount.php" method="post">
-                                <div class="pt-1 pb-3 mx-3">
-                                    <label>Mã nhân viên</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id" disabled
-                                        placeholder="" value="<?php echo $row['id'];?>">
-                                    <label>Họ và tên</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="hovaten"
-                                        disabled placeholder="" value="<?php echo $row['hoten'];?>">
-                                    <label>Ngày sinh</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaysinh"
-                                        disabled placeholder="" value="<?php echo $row['ngaysinh'];?>">
-                                    <label>Giới tính</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
-                                        disabled placeholder="" value="<?php echo $row['gioitinh'];?>">
-                                    <label class="mt-3">Địa chỉ</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="diachi"
-                                        placeholder="" value="<?php echo $row['diachi'];?>">
-                                    <label class="mt-3">Số điện thoại</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="tel" name="sdt"
-                                        value="<?php echo $row['sđt'];?>">
+                            <form class="form-addaccount" action="process_updateaccount.php?id=<?php echo $row['id'];?>"
+                                method="post">
+                                <div class="pt-1 pb-3 mx-3 row">
+                                    <div class="col">
+                                        <label>Mã nhân viên</label>
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="id"
+                                            disabled placeholder="" value="<?php echo $row['id'];?>">
+                                        <label class="mt-3">Họ và tên</label>
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="hovaten"
+                                            disabled placeholder="" value="<?php echo $row['hoten'];?>">
+                                        <label class="mt-3">Ngày sinh</label>
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaysinh"
+                                            disabled placeholder="" value="<?php echo $row['ngaysinh'];?>">
+                                        <label class="mt-3">Giới tính</label>
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
+                                            disabled placeholder="" value="<?php echo $row['gioitinh'];?>">
+                                    </div>
+                                    <div class="col">
+                                        <label class="">Địa chỉ</label>
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="diachi"
+                                            placeholder="" value="<?php echo $row['diachi'];?>">
+                                        <label class="mt-3">Số điện thoại</label>
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="tel" name="sdt"
+                                            value="<?php echo $row['sđt'];?>">
                                         <label class="mt-3">Chức vụ</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="chucvu"
-                                        value="<?php echo $row['chucvu'];?>">
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="chucvu"
+                                            value="<?php echo $row['chucvu'];?>">
                                         <label class="mt-3">Lương</label>
-                                    <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="luong"
-                                        value="<?php echo $row['luong'];?>">
+                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="luong"
+                                            value="<?php echo $row['luong'];?>">
+                                    </div>
                                     <div class="mx-auto p-1  text-center">
                                         <button style="color:white;"
                                             class="mt-3 mb-2 fw-bold btn btn-lg btn-block btn-warning" type="submit"

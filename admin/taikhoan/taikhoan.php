@@ -79,30 +79,37 @@
     </div>
 
     <div class="height-100">
-        <div class="container px-md-4">
-            <h4 class="text-center text-danger mt-5">DANH SÁCH NHÂN VIÊN </h4>
-            <div>
-                <a class="btn btn-warning" href="addaccount.php">Thêm tài khoản</a>
-            </div>
-            <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Mã nhân viên</th>
-                    <th scope="col">Họ và tên</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Chức vụ</th>
-                    <th scope="col">Lương</th>
-                    <th scope="col">Sửa</th>
-                    <th scope="col">Xóa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <section class="p-5">
+            <div class="px-5 py-4"
+                style="background: white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a; border-radius:10px ">
+                <div class="container px-md-2">
+                    <h4 class="text-center text-warning">DANH SÁCH NHÂN VIÊN</h4>
+                    <div class="text-center text-warning" >
+                        <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
+                    </div>
+                    <div>
+                        <a class="btn btn-warning" href="addaccount.php"><i class="bi bi-plus-circle"></i> Thêm tài
+                            khoản</a>
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã nhân viên</th>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col">Số điện thoại</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Chức vụ</th>
+                                <th scope="col">Lương</th>
+                                <th scope="col">Sửa</th>
+                                <th scope="col">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                     $conn = mysqli_connect('localhost','root','','cse481');
                     if(!$conn){
                         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
@@ -112,32 +119,35 @@
                     if(mysqli_num_rows($result) > 0){
                         while($row = mysqli_fetch_assoc($result)){
                 ?>
-                <tr>
-                    <th scope="row"><?php echo $row['id']; ?></th>
-                    <td><?php echo $row['hoten']; ?></td>
-                    <td><?php echo $row['ngaysinh']; ?></td>
-                    <td><?php echo $row['gioitinh']; ?></td>
-                    <td><?php echo $row['diachi']; ?></td>
-                    <td><?php echo $row['sđt']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['password']; ?></td>
-                    <td><?php echo $row['chucvu']; ?></td>
-                    <td><?php echo $row['luong']; ?></td>
-                    <td><a href="update_account.php?id=<?php echo $row['id']; ?>"><i
-                                class="bi bi-pencil-square"></i></a></td>
-                    <td><a href="delete_account.php?id=<?php echo $row['id']; ?>"><i
-                                class="bi bi-trash"></i></a></td>
-                </tr>
-                <?php
+                            <tr>
+                                <th scope="row"><?php echo $row['id']; ?></th>
+                                <td><?php echo $row['hoten']; ?></td>
+                                <td><?php echo $row['ngaysinh']; ?></td>
+                                <td><?php echo $row['gioitinh']; ?></td>
+                                <td><?php echo $row['diachi']; ?></td>
+                                <td><?php echo $row['sđt']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['password']; ?></td>
+                                <td><?php echo $row['chucvu']; ?></td>
+                                <td><?php echo $row['luong']; ?></td>
+                                <td><a href="update_account.php?id=<?php echo $row['id']; ?>"><i
+                                            class="bi bi-pencil-square"></i></a></td>
+                                <td><a href="delete_account.php?id=<?php echo $row['id']; ?>"><i
+                                            class="bi bi-trash"></i></a></td>
+                            </tr>
+                            <?php
                         }
                     }
                     mysqli_close($conn);
                 ?>
 
 
-            </tbody>
-        </table>
-        </div>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
     </div>
     <?php include('../template/footer.php'); 
 ?>

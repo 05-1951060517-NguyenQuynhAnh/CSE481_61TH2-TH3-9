@@ -83,7 +83,7 @@
         <div class="container p-3">
             <div class="mt-2 ms-3 row">
                 <div class="login col-md-12 d-flex justify-content-center">
-                    <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:500px;border-radius:8px"
+                    <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:600px;border-radius:8px"
                         class="">
                         <p class="text-center text-warning ps-4 mt-3 fs-2 mb-0 fw-bold ">THÊM TÀI KHOẢN</p>
                         <hr>
