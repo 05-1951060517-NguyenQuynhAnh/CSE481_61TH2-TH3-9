@@ -1,6 +1,5 @@
 <?php include('../template/header.php'); 
 ?>
-
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
@@ -82,17 +81,12 @@
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
                 <p class="fs-4 fw-bold">Thêm sản phẩm</p>
-                <form action="process-add-employee_nhanvien.php" method="post">
+                <form action="process_add_sanpham.php" method="post">
 
                     <label for="txtMaSP">Mã sản phẩm</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
                         placeholder="Nhập mã sản phẩm">
 
-                    <div class="form-group mt-2">
-                        <label for="txtTenSP">Tên sản phẩm</label>
-                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenSP"
-                            placeholder="Nhập tên sản phẩm">
-                    </div>
                     <div class="form-group mt-2">
                         <label for="txtTenSP">Tên sản phẩm</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenSP"
@@ -117,8 +111,8 @@
                         <label for="txtTrangthai">Trạng thái</label>
                         <select id="inputState" name="txtTrangthai" required=""
                             class="col-md-12 ps-3 border py-2 rounded-3">
-                            <option value="1">Tạm dừng bán</option>
-                            <option selected="selected" value="0">Đang bán</option>
+                            <option value="Tạm dừng bán">Tạm dừng bán</option>
+                            <option selected="selected" value="Đang bán">Đang bán</option>
                         </select>
                     </div>
                     <div class="form-group mt-2">
@@ -128,18 +122,18 @@
                     <div class="form-group mt-2">
                         <input type="file" required="" name="file3" class="form-control-file">
                     </div>
-                    <button type="submit" style="background:#ffc107"class="btn  mt-4">Tạo sản phẩm</button>
+                    <button type="submit" style="background:#ffc107" class="btn  mt-4">Tạo sản phẩm</button>
                 </form>
-                <a class="text-decoration-none link-dark" style="font-size:13px"href="sanpham.php">
-                        <div class="mt-3">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                    width="14" height="14" fill="currentColor" class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                </svg> 
-                                <p class="ms-2 d-inline">Quay lại </p>
-                        </div>
-                        </a>
+                <a class="text-decoration-none link-dark" style="font-size:13px" href="sanpham.php">
+                    <div class="mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                            class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg>
+                        <p class="ms-2 d-inline">Quay lại </p>
+                    </div>
+                </a>
             </div>
         </section>
     </div>

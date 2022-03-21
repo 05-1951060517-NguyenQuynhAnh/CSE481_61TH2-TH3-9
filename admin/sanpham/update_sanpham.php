@@ -1,6 +1,13 @@
 <?php include('../template/header.php'); 
 ?>
-
+<?php
+$id = $_GET['id'];
+$sql = "SELECT * FROM sanpham WHERE MaSP='$id';";
+    $result = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)>0){
+    $row = mysqli_fetch_assoc($result);
+    }
+?>
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
@@ -79,82 +86,62 @@
 
     <div class="height-100">
         <section class="p-5">
-            <div class="px-5 py-4"style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
-                <a class="col " href="add_sanpham.php">
-                    <button type="button" style="background:#ffc107;" class="btn  d-flex" data-toggle="modal"
-                        data-target="#create-cust"><i class="fa fa-plus-circle"></i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class=" bi bi-plus-circle-fill mt-1 me-2" viewBox="0 0 16 16">
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+            <div class="px-5 py-4"
+                style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
+                <p class="fs-4 fw-bold">Sửa thông tin sản phẩm</p>
+                <form action="process_update_sanpham.php?id=<?php echo $row['MaSP'];?>" method="post">
+
+                    <label for="txtMaSP">Mã sản phẩm</label>
+                    <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
+                        placeholder="Nhập mã sản phẩm"value="<?php echo $row['MaSP'];?>">
+
+                    <div class="form-group mt-2">
+                        <label for="txtTenSP">Tên sản phẩm</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenSP"
+                            placeholder="Nhập tên sản phẩm"value="<?php echo $row['TenSP'];?>">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="txtGiaban">Giá bán</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGiaban"
+                            placeholder="Nhập giá bán"value="<?php echo $row['Giaban'];?>">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="txtGianhap">Gia nhập</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGianhap"
+                            placeholder="Nhập giá nhập"value="<?php echo $row['Gianhap'];?>">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="txtSoluong">Số lượng</label>
+                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtSoluong"
+                            placeholder="Nhập số lượng"value="<?php echo $row['Soluong'];?>">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="txtTrangthai">Trạng thái</label>
+                        <select id="inputState" name="txtTrangthai" required=""
+                            class="col-md-12 ps-3 border py-2 rounded-3">
+                            <option value="Tạm dừng bán"<?php echo $row['Trangthai'] == 'Đang bán'?'selected':''?>>Đang bán</option>
+                            <option value="Tạm dừng bán"<?php echo $row['Trangthai'] == 'Tạm dừng bán'?'selected':''?>>Tạm dừng bán</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        Mô tả<br>
+                        <textarea class="ps-3 border py-2 rounded-3 col-md-12" rows="7" name="txtMota"><?php echo $row['Mota'];?></textarea><br>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="file" required="" name="file3" class="form-control-file" >
+                    </div>
+                    <button type="submit" style="background:#ffc107" class="btn  mt-4">Cập nhật</button>
+                </form>
+                <a class="text-decoration-none link-dark" style="font-size:13px" href="sanpham.php">
+                    <div class="mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                            class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                         </svg>
-                        <div class="">
-                            <p class="mb-0">Tạo sản phẩm mới</p>
-                        </div>
-                    </button>
+                        <p class="ms-2 d-inline">Quay lại </p>
+                    </div>
                 </a>
-                <table class="mt-3 table table-striped">
-                    <thead>
-                        <tr style="color:#888;">
-                            <th scope="col"></th>
-                            <th style="width:200px" class="col ps-3" scope="col">Tên sản phẩm</th>
-                            <th style="width:80px" scope="col">Giá bán</th>
-                            <th style="width:80px" scope="col">Giá nhập</th>
-                            <th style="width:80px" scope="col">Số lượng</th>
-                            <th scope="col">Mô tả</th>
-                            <th style="width:90px" scope="col">Trạng thái</th>
-                            <th style="width:80px" scope="col">Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-
-                            $sql = "SELECT * FROM sanpham ";
-                            $res = mysqli_query($conn, $sql);
-                            $count = mysqli_num_rows($res);
-                            if($count>0)
-                            {
-                            while($row=mysqli_fetch_assoc($res))
-                            {
-                            ?>
-                        <tr>
-
-                            <td class="">
-                                <img class="" width="100px" height="100px" src="../../img/<?php echo $row['img']; ?>"
-                                    alt="">
-
-                            </td>
-                            <td class="">
-                                <p class="ms-2"><?php echo $row['TenSP']; ?></p>
-                            </td>
-                            <td class="">
-                                <p class=""><?php echo number_format($row['Giaban']); ?></p>
-                            </td>
-                            <td class="">
-                                <p class=""><?php echo number_format($row['Gianhap']); ?></p>
-                            </td>
-                            <td class="">
-                                <p class=""><?php echo $row['Soluong']; ?></p>
-                            </td>
-                            <td class="">
-                                <p class=""><?php echo $row['Mota']; ?></p>
-                            </td>
-                            <td class="">
-                                <p class=""><?php echo $row['Trangthai']; ?></p>
-                            </td>
-                            <td><a href="update_sanpham.php?id=<?php echo $row['MaSP']; ?>"><i class="me-3 bi bi-pencil-square"></i></a>
-                                <a href="delete_sanpham.php?id=<?php echo $row['MaSP']; ?>"><i class="bi bi-trash"></i></a>
-                            </td>
-
-
-                        </tr>
-
-                        <?php
-                }
-            }           
-            ?>
-                    </tbody>
-                </table>
             </div>
         </section>
     </div>
