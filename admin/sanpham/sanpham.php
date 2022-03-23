@@ -52,7 +52,7 @@ $sql1 = "SELECT * FROM account WHERE id='$id';";
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
                     </div>
-                    <a href="../index.php?id=<?php echo $id ?>" class="d-flex nav_link ">
+                    <a href="../check.php?id=<?php echo $id ?>" class="d-flex nav_link ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -63,7 +63,7 @@ $sql1 = "SELECT * FROM account WHERE id='$id';";
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../taikhoan/taikhoan.php?id=<?php echo $row['id']; ?>" class="d-flex nav_link">
+                    <a href="../check_acount.php?id=<?php echo $row['id']; ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
