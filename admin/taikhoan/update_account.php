@@ -132,13 +132,13 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                             disabled placeholder="" value="<?php echo $row['id'];?>">
                                         <label class="mt-3">Họ và tên</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="hovaten"
-                                            disabled placeholder="" value="<?php echo $row['hoten'];?>">
+                                             placeholder="" value="<?php echo $row['hoten'];?>">
                                         <label class="mt-3">Ngày sinh</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaysinh"
-                                            disabled placeholder="" value="<?php echo $row['ngaysinh'];?>">
+                                             placeholder="" value="<?php echo $row['ngaysinh'];?>">
                                         <label class="mt-3">Giới tính</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
-                                            disabled placeholder="" value="<?php echo $row['gioitinh'];?>">
+                                         placeholder="" value="<?php echo $row['gioitinh'];?>">
                                     </div>
                                     <div class="col">
                                         <label class="">Địa chỉ</label>
@@ -162,7 +162,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                 </div>
                             </form>
                             <a class="text-decoration-none link-dark" style="font-size:13px"
-                                href="taikhoan.php?id=<?php echo $row['id']; ?>">
+                                href="taikhoan.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>?>">
                                 <div class="mb-3 ms-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                                         class="ms-3 d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">

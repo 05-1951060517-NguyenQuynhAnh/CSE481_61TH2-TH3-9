@@ -142,7 +142,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                 </div>
                             </div>
                         </form>
-                        <a class="text-decoration-none link-dark" style="font-size:13px"href="taikhoan.php?id=<?php echo $row['id'];?>">
+                        <a class="text-decoration-none link-dark" style="font-size:13px"href="taikhoan.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>?>">
                         <div class="mb-3 ms-1">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                     width="14" height="14" fill="currentColor" class="ms-3 d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">

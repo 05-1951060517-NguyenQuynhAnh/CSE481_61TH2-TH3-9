@@ -14,7 +14,7 @@
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
     
-    $sql = "UPDATE account SET diachi='$diachi', sđt='$sdt', chucvu='$chucvu', luong='$luong' WHERE id='$id1'";
+    $sql = "UPDATE account SET hoten='$hovaten', gioitinh='$gioitinh', ngaysinh='$ngaysinh', diachi='$diachi', sđt='$sdt', chucvu='$chucvu', luong='$luong' WHERE id='$id1'";
 
     $result = mysqli_query($conn,$sql);
 
