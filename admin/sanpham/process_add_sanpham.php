@@ -11,7 +11,7 @@ $id = $_GET['id'];
     if (!$MaSP || !$TenSP || !$Giaban || !$Gianhap || !$Soluong || !$Trangthai || !$Mota || !$file3 )
     {
         $error = "Vui lòng nhập đầy đủ thông tin";
-        header("location:add_sanpham.php?error=$error"); 
+        header("location:add_sanpham.php??id=$id&error=$error"); 
         exit;
     }
     require_once '../../config/database.php';

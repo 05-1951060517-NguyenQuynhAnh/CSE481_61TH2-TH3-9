@@ -9,8 +9,9 @@ $sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
     $row = mysqli_fetch_assoc($result);
     }
 ?>
+
 <body id="body-pd">
-<header class="header" id="header">
+    <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
                 class="ms-3 bi bi-list mt-2" viewBox="0 0 16 16">
@@ -50,7 +51,7 @@ $sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
                     </div>
-                    <a href="../index.php?id=<?php echo $id ?>" class="d-flex nav_link ">
+                    <a href="../check.php?id=<?php echo $id ?>" class="d-flex nav_link ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -61,7 +62,7 @@ $sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../taikhoan/taikhoan.php?id=<?php echo $id ?>" class="d-flex nav_link">
+                    <a href="../check_acount.php?id=<?php echo $row['id']; ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -109,49 +110,77 @@ $sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
                 <p class="fs-4 fw-bold">Sửa thông tin sản phẩm</p>
-                <form action="process_update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['MaSP']; ?>" method="post">
+                <form action="process_update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['MaSP']; ?>"
+                    method="post">
                     <label for="txtMaSP">Mã sản phẩm</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
-                        placeholder="Nhập mã sản phẩm"value="<?php echo $row['MaSP'];?>">
+                        placeholder="Nhập mã sản phẩm" value="<?php echo $row['MaSP'];?>">
 
                     <div class="form-group mt-2">
                         <label for="txtTenSP">Tên sản phẩm</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenSP"
-                            placeholder="Nhập tên sản phẩm"value="<?php echo $row['TenSP'];?>">
+                            placeholder="Nhập tên sản phẩm" value="<?php echo $row['TenSP'];?>">
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtGiaban">Giá bán</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGiaban"
-                            placeholder="Nhập giá bán"value="<?php echo $row['Giaban'];?>">
+                            placeholder="Nhập giá bán" value="<?php echo $row['Giaban'];?>">
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtGianhap">Gia nhập</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGianhap"
-                            placeholder="Nhập giá nhập"value="<?php echo $row['Gianhap'];?>">
+                            placeholder="Nhập giá nhập" value="<?php echo $row['Gianhap'];?>">
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtSoluong">Số lượng</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtSoluong"
-                            placeholder="Nhập số lượng"value="<?php echo $row['Soluong'];?>">
+                            placeholder="Nhập số lượng" value="<?php echo $row['Soluong'];?>">
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtTrangthai">Trạng thái</label>
                         <select id="inputState" name="txtTrangthai" required=""
                             class="col-md-12 ps-3 border py-2 rounded-3">
-                            <option value="Tạm dừng bán"<?php echo $row['Trangthai'] == 'Đang bán'?'selected':''?>>Đang bán</option>
-                            <option value="Tạm dừng bán"<?php echo $row['Trangthai'] == 'Tạm dừng bán'?'selected':''?>>Tạm dừng bán</option>
+                            <option value="Tạm dừng bán" <?php echo $row['Trangthai'] == 'Đang bán'?'selected':''?>>Đang
+                                bán</option>
+                            <option value="Tạm dừng bán" <?php echo $row['Trangthai'] == 'Tạm dừng bán'?'selected':''?>>
+                                Tạm dừng bán</option>
                         </select>
                     </div>
                     <div class="form-group mt-2">
                         Mô tả<br>
-                        <textarea class="ps-3 border py-2 rounded-3 col-md-12" rows="7" name="txtMota"><?php echo $row['Mota'];?></textarea><br>
+                        <textarea class="ps-3 border py-2 rounded-3 col-md-12" rows="7"
+                            name="txtMota"><?php echo $row['Mota'];?></textarea><br>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="file" required="" name="file3" class="form-control-file" >
+                        <input type="file" required="" name="file3" class="form-control-file">
+                        <img name="file3"style="width:90px;height:90px"src="../../img/<?php echo $row['img'];?>" alt="">
                     </div>
-                    <button type="submit" style="background:#ffc107" class="btn  mt-4">Cập nhật</button>
+                    <button type="button" style="background:#ffc107" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="btn  mt-4">Cập nhật</button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Sửa sản phẩm</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có chắc chắn muốn thay đổi thông tin sản phẩm này?
+                                </div>
+                                <div class="modal-footer">
+                                   <button type="submit" class="btn btn-primary">Có</button></a>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Không</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
-                <a class="text-decoration-none link-dark" style="font-size:13px" href="sanpham.php?id=<?php echo $row['id'];?>">
+                <a class="text-decoration-none link-dark" style="font-size:13px"
+                    href="sanpham.php?id=<?php echo $row['id'];?>">
                     <div class="mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                             class="d-inline link-dark bi bi-arrow-left" viewBox="0 0 16 16">
