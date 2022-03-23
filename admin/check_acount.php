@@ -13,7 +13,8 @@ if(!$conn){
                 header("location:taikhoan/taikhoan.php?id=$id");
             }
             else{
-                header("location:sanpham/sanpham.php?id=$id");
+                $error = "Xin lỗi! Bạn không phải là admin nên không có quyền truy cập vào trang này";
+                header("location:sanpham/sanpham.php?id=$id&error=$error");
             }
         }else{
             

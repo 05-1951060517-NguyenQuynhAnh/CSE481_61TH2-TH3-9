@@ -201,8 +201,8 @@ $sql1 = "SELECT * FROM account WHERE id='$id';";
                                                 <a
                                                     href="delete_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['MaSP']; ?>"><button
                                                         type="button" class="btn btn-primary"
-                                                        data-bs-dismiss="modal">Có</button></a>
-                                                <button type="button" class="btn btn-secondary">Không</button>
+                                                        >Có</button></a>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
                                             </div>
                                         </div>
                                     </div>
