@@ -1,7 +1,15 @@
 <?php include('../template/header.php'); 
 ?>
+<?php
+$id = $_GET['id'];
+$sql1 = "SELECT * FROM account WHERE id='$id';";
+    $result = mysqli_query($conn,$sql1);
+    if(mysqli_num_rows($result)>0){
+    $row = mysqli_fetch_assoc($result);
+    }
+?>
 
-<body id="body-pd">
+<body>
     <header class="header" id="header">
         <div class="header_toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="header-toggle"
@@ -10,7 +18,28 @@
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <div class="header_img"> <img src="../../img/1.png" alt=""> </div>
+        <h4 class="mt-1 text-center text-warning">Xin chào, <?php echo $row['chucvu'];?></h4>
+
+        <div class="mt-3 d-flex py-2 ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
+                viewBox="0 0 16 16">
+                <path
+                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+            </svg>
+
+            <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $row['hoten']; ?></p>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                    <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
+                </a>
+                <a href="../logout.php">
+                    <li><button class="dropdown-item" type="button">Log out</button></li>
+                </a>
+            </ul>
+        </div>
+
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -23,7 +52,7 @@
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
                     </div>
-                    <a href="../index.php" class="d-flex nav_link ">
+                    <a href="../index.php?id=<?php echo $id ?>" class="d-flex nav_link ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -34,7 +63,7 @@
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="../taikhoan/taikhoan.php" class="d-flex nav_link">
+                    <a href="../taikhoan/taikhoan.php?id=<?php echo $row['id']; ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -79,31 +108,34 @@
 
     <div class="height-100">
         <section class="p-5">
-            <div class="px-5 py-4"style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
-                <a class="col " href="add_sanpham.php">
-                    <button type="button" style="background:#ffc107;" class="btn  d-flex" data-toggle="modal"
-                        data-target="#create-cust"><i class="fa fa-plus-circle"></i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class=" bi bi-plus-circle-fill mt-1 me-2" viewBox="0 0 16 16">
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                        </svg>
-                        <div class="">
-                            <p class="mb-0">Tạo sản phẩm mới</p>
-                        </div>
-                    </button>
-                </a>
+            <?php
+            if(isset($_GET['error'])){
+                echo "<h4 class='text-center'style ='color:red'>{$_GET['error']}</h4>";
+                }
+            ?>
+            <div class="px-5 py-4"
+                style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
+                <h4 class="text-center text-warning">DANH SÁCH SẢN PHẨM</h4>
+                <div class="text-center text-warning">
+                    <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
+                </div>
+                <div>
+                    <a class="btn btn-warning" href="add_sanpham.php?id=<?php echo $id ?>"><i
+                            class="bi bi-plus-circle"></i> Thêm sản phẩm
+                        mới</a>
+                </div>
                 <table class="mt-3 table table-striped">
                     <thead>
                         <tr style="color:#888;">
                             <th scope="col"></th>
                             <th style="width:200px" class="col ps-3" scope="col">Tên sản phẩm</th>
                             <th style="width:80px" scope="col">Giá bán</th>
-                            <th style="width:80px" scope="col">Giá nhập</th>
-                            <th style="width:80px" scope="col">Số lượng</th>
+                            <th style="width:90px" scope="col">Giá nhập</th>
+                            <th style="width:90px" scope="col">Số lượng</th>
                             <th scope="col">Mô tả</th>
-                            <th style="width:90px" scope="col">Trạng thái</th>
-                            <th style="width:80px" scope="col">Thao tác</th>
+                            <th style="width:95px" scope="col">Trạng thái</th>
+                            <th style="width:10px" scope="col">Sửa</th>
+                            <th style="width:10px" scope="col">Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -142,8 +174,41 @@
                             <td class="">
                                 <p class=""><?php echo $row['Trangthai']; ?></p>
                             </td>
-                            <td><a href="update_sanpham.php?id=<?php echo $row['MaSP']; ?>"><i class="me-3 bi bi-pencil-square"></i></a>
-                                <a href="delete_sanpham.php?id=<?php echo $row['MaSP']; ?>"><i class="bi bi-trash"></i></a>
+                            <td class="text-center">
+
+                                <a href="update_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['MaSP']; ?>"><i
+                                        class="link-dark me-3 bi bi-pencil-square"></i></a>
+                            </td>
+                            <td>
+                                <button type="button" style="background: transparent;" class="border-0"
+                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Xóa sản phẩm</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Bạn có chắc chắn muốn xóa sản phẩm này?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a
+                                                    href="delete_sanpham.php?id=<?php echo $id ?>&id1=<?php echo $row['MaSP']; ?>"><button
+                                                        type="button" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">Có</button></a>
+                                                <button type="button" class="btn btn-secondary">Không</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </td>
 
 

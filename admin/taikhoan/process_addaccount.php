@@ -1,4 +1,5 @@
 <?php
+$id1 = $_GET['id'];
     $id = $_POST['id']; 
     $hovaten = $_POST['hovaten'];
     $gioitinh = $_POST['gioitinh'];
@@ -13,9 +14,9 @@
     $sql = "INSERT INTO account (id,hoten,gioitinh,ngaysinh,email,password) VALUES('$id','$hovaten','$gioitinh','$ngaysinh','$email','$matkhau')";
     $number = mysqli_query($conn,$sql);
     if($number > 0){
-     header("location: taikhoan.php"); //Chuyển hướng về Trang quản trị
+     header("location: taikhoan.php?id=$id1");
     }else{
-        header("location: error.php"); //Chuyển hướng, hiển thị thông báo lỗi
+        header("location: error.php"); 
     }
 
     mysqli_close($conn);

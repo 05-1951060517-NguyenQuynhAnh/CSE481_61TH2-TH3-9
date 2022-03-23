@@ -1,5 +1,6 @@
 <?php
     $id= $_GET['id'];
+    $id1= $_GET['id1'];
     $hovaten = $_POST['hovaten'];
     $gioitinh = $_POST['gioitinh'];
     $ngaysinh = $_POST['ngaysinh'];
@@ -13,7 +14,7 @@
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
     
-    $sql = "UPDATE account SET diachi='$diachi', sđt='$sdt', chucvu='$chucvu', luong='$luong' WHERE id='$id'";
+    $sql = "UPDATE account SET diachi='$diachi', sđt='$sdt', chucvu='$chucvu', luong='$luong' WHERE id='$id1'";
 
     $result = mysqli_query($conn,$sql);
 

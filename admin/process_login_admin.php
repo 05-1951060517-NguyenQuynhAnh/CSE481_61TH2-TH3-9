@@ -7,13 +7,19 @@
         if(!$conn){
             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
         }
-        // Bước 02: Thực hiện truy vấn
-        $sql = "SELECT * FROM account WHERE email = '$user'AND password='$pass'";
+        $sql = "SELECT * FROM account WHERE email ='$user'AND password='$pass'";
         $result = mysqli_query($conn,$sql);
         if(mysqli_num_rows($result) > 0){
-          
-            $_SESSION['isLoginOK'] = $email;
-            header("location:index.php?id=$user"); //Chuyển hướng về Trang quản trị
+            $row = mysqli_fetch_assoc($result);
+            $id = $row['id'];
+            $_SESSION['isLoginOK'] = $id;
+            if($row['chucvu'] =='admin'){
+                $_SESSION['isLoginOK_Admin'] = $row['chucvu'];
+                header("location:index.php?id=$id");
+            }
+            else{
+                header("location:sanpham/sanpham.php?id=$id");
+            }
         }else{
             $error = "Bạn nhập thông tin Email hoặc mật khẩu chưa chính xác";
             header("location:login.php?error=$error"); 

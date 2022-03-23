@@ -1,5 +1,26 @@
 <?php include('../template/header.php'); 
 ?>
+<?php
+$id = $_GET['id'];
+$sql1 = "SELECT * FROM account WHERE id='$id';";
+$result = mysqli_query($conn,$sql1);
+if(mysqli_num_rows($result)>0){
+    $row = mysqli_fetch_assoc($result);
+}
+?>
+
+<?php
+if(!isset($_SESSION['isLoginOK'])){
+    header("location:login.php");
+}else{
+   if(!isset($_SESSION['isLoginOK_Admin'])){
+    $error = "Xin lỗi! Bạn không phải là admin nên không có quyền truy cập vào trang này";
+    header("location:../sanpham/sanpham.php?id=$id&error=$error");
+}else{
+
+}
+}
+?>
 
 <body id="body-pd">
     <header class="header" id="header">
@@ -10,7 +31,26 @@
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <div class="header_img"> <img src="../../img/1.png" alt=""> </div>
+        <h4 class="mt-1 text-center text-warning">Xin chào, <?php echo $row['chucvu'];?></h4>
+        <div class="mt-3 d-flex py-2 ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
+                viewBox="0 0 16 16">
+                <path
+                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+            </svg>
+
+            <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $row['hoten']; ?></p>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <a href="../taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                    <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
+                </a>
+                <a href="../logout.php">
+                    <li><button class="dropdown-item" type="button">Log out</button></li>
+                </a>
+            </ul>
+        </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -23,7 +63,7 @@
                     <div class="nav_links">
                         <span class="nav_names">DASHBOARD</span>
                     </div>
-                    <a href="../index.php" class="d-flex nav_link ">
+                    <a href="../index.php?id=<?php echo $id ?>" class="d-flex nav_link ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-speedometer nav_icon" viewBox="0 0 16 16">
                             <path
@@ -48,7 +88,7 @@
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="../sanpham/sanpham.php" class="d-flex nav_link">
+                    <a href="../sanpham/sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
@@ -84,11 +124,12 @@
                 style="background: white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a; border-radius:10px ">
                 <div class="container px-md-2">
                     <h4 class="text-center text-warning">DANH SÁCH NHÂN VIÊN</h4>
-                    <div class="text-center text-warning" >
+                    <div class="text-center text-warning">
                         <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i> <i class="bi bi-flower3"></i>
                     </div>
                     <div>
-                        <a class="btn btn-warning" href="addaccount.php"><i class="bi bi-plus-circle"></i> Thêm tài
+                        <a class="btn btn-warning" href="addaccount.php?id=<?php echo $row['id'];?>"><i
+                                class="bi bi-plus-circle"></i> Thêm tài
                             khoản</a>
                     </div>
                     <table class="table mt-3">
@@ -109,16 +150,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                    $conn = mysqli_connect('localhost','root','','cse481');
-                    if(!$conn){
-                        die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
-                    }
-                    $sql = "SELECT * FROM account";
-                    $result = mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_assoc($result)){
-                ?>
+                            <?php 
+
+                                $sql = "SELECT * FROM account ";
+                                $res = mysqli_query($conn, $sql);
+                                $count = mysqli_num_rows($res);
+                                if($count>0)
+                                {
+                                while($row=mysqli_fetch_assoc($res))
+                                {
+                                ?>
                             <tr>
                                 <th scope="row"><?php echo $row['id']; ?></th>
                                 <td><?php echo $row['hoten']; ?></td>
@@ -130,9 +171,9 @@
                                 <td><?php echo $row['password']; ?></td>
                                 <td><?php echo $row['chucvu']; ?></td>
                                 <td><?php echo $row['luong']; ?></td>
-                                <td><a href="update_account.php?id=<?php echo $row['id']; ?>"><i
+                                <td><a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>"><i
                                             class="bi bi-pencil-square"></i></a></td>
-                                <td><a href="delete_account.php?id=<?php echo $row['id']; ?>"><i
+                                <td><a href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>"><i
                                             class="bi bi-trash"></i></a></td>
                             </tr>
                             <?php

@@ -1,4 +1,5 @@
 <?php
+$id = $_GET['id'];
     $MaSP = $_POST['txtMaSP'];
     $TenSP = $_POST['txtTenSP'];
     $Giaban = $_POST['txtGiaban'];
@@ -19,9 +20,8 @@
     }
     $sql = "INSERT INTO sanpham (MaSP,TenSP,Giaban,Gianhap,Soluong,Mota,Trangthai,img,MaLH) VALUES('$MaSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Trangthai','$file3','LH01')";
     $number = mysqli_query($conn,$sql);
-
     if($number > 0){
-     header("location: sanpham.php"); 
+     header("location: sanpham.php?id=$id"); 
     }else{
         header("location: error.php"); 
     }

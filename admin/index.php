@@ -1,6 +1,25 @@
 <?php include('../config/database.php'); 
 ?>
+<?php
+$id = $_GET['id'];
+if(!isset($_SESSION['isLoginOK'])){
+    header("location:login.php");
+}else{
+   if(!isset($_SESSION['isLoginOK_Admin'])){
+    $error = "Xin lỗi! Bạn không phải là admin nên không có quyền truy cập vào trang này";
+    header("location:sanpham/sanpham.php?id=$id&error=$error");
+}
+}
 
+?>
+<?php
+
+$sql = "SELECT * FROM account WHERE id='$id';";
+    $result = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)>0){
+    $row = mysqli_fetch_assoc($result);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +31,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style1.css">
     <title>Admin</title>
     <link rel="shortcut icon" href="../img/1.png">
 </head>
@@ -26,7 +45,26 @@
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </div>
-        <div class="header_img"> <img src="../img/1.png" alt=""> </div>
+        <h4 class="mt-1 text-center text-warning">Xin chào, <?php echo $row['chucvu'];?></h4>
+        <div class="mt-3 d-flex py-2 ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people me-2"
+                viewBox="0 0 16 16">
+                <path
+                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+            </svg>
+
+            <p class="pt-1 dropdown-toggle" style="font-size:13px" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $row['hoten']; ?></p>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <a href="taikhoan/update_account.php?id=<?php echo $id?>&id1=<?php echo $id?>">
+                    <li><button class="dropdown-item" type="button">Sửa tài khoản</button></li>
+                </a>
+                <a href="logout.php">
+                    <li><button class="dropdown-item" type="button">Log out</button></li>
+                </a>
+            </ul>
+        </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -50,7 +88,7 @@
                         <span class=" nav_name">Dashboard</span>
                         <i class="nav_icon2 bi bi-chevron-right"></i>
                     </a>
-                    <a href="taikhoan/taikhoan.php" class="d-flex nav_link">
+                    <a href="taikhoan/taikhoan.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-check nav_icon" viewBox="0 0 16 16">
                             <path
@@ -64,7 +102,7 @@
                     <div class="nav_links">
                         <span class="nav_names">APPS</span>
                     </div>
-                    <a href="sanpham/sanpham.php" class="d-flex nav_link">
+                    <a href="sanpham/sanpham.php?id=<?php echo $id ?>" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box2-heart nav_icon" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
@@ -77,7 +115,7 @@
                     <div class="nav_links">
                         <span class="nav_names">PAGES</span>
                     </div>
-                    <a href="#" class="d-flex nav_link">
+                    <a href="../index.php" class="d-flex nav_link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                             class="bi bi-journal nav_icon" viewBox="0 0 16 16">
                             <path
@@ -96,7 +134,7 @@
         <section class="p-5">
             <div class="d-flex mb-5">
                 <?php 
-                $sql = "SELECT sum(Soluong) as sl_ton FROM `sanpham`";
+                $sql = "SELECT sum(Soluong) as sl_ton FROM `sanpham` ";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)>0){
                     $row = mysqli_fetch_assoc($result);
@@ -124,7 +162,7 @@
                     </div>
                 </div>
                 <?php 
-                $sql1 = "SELECT sum(MaHD) as hoadon FROM `hoadon`";
+                $sql1 = "SELECT sum(MaHD) as hoadon FROM `hoadon` GROUP BY year(CURDATE())";
                     $result1 = mysqli_query($conn,$sql1);
                     if(mysqli_num_rows($result1)>0){
                     $row = mysqli_fetch_assoc($result1);
@@ -139,9 +177,9 @@
                                 <p class="card-text fs-3 link-light fw-bold"><?php echo $row['hoadon']; ?></p>
                             </div>
                             <div class="col-md">
-                                <svg style="color:rgba(255, 255, 255, 0.4);"
-                                    xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
-                                    class="mt-4 bi bi-calendar-heart" viewBox="0 0 16 16">
+                                <svg style="color:rgba(255, 255, 255, 0.4);" xmlns="http://www.w3.org/2000/svg"
+                                    width="45" height="45" fill="currentColor" class="mt-4 bi bi-calendar-heart"
+                                    viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5ZM1 14V4h14v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Zm7-6.507c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
                                 </svg>
@@ -150,7 +188,7 @@
                     </div>
                 </div>
                 <?php 
-                $sql2 = "SELECT sum(Dongia) as doanhthu FROM chitiethoadon";
+                $sql2 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban) as doanhthu FROM sanpham,chitiethoadon where sanpham.MaSP=chitiethoadon.MaSP GROUP BY year(CURDATE()) ";
                     $res = mysqli_query($conn,$sql2);
                     if(mysqli_num_rows($res)>0){
                     $row = mysqli_fetch_assoc($res);
@@ -170,9 +208,9 @@
 
                             </div>
                             <div class="col-md">
-                                <svg style="color:rgba(255, 255, 255, 0.4);"
-                                    xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
-                                    class="mt-4 ms-1 bi bi-cash-coin" viewBox="0 0 16 16">
+                                <svg style="color:rgba(255, 255, 255, 0.4);" xmlns="http://www.w3.org/2000/svg"
+                                    width="45" height="45" fill="currentColor" class="mt-4 ms-1 bi bi-cash-coin"
+                                    viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
                                     <path
@@ -187,7 +225,7 @@
                     </div>
                 </div>
                 <?php 
-                $sql3 = "SELECT sum(Dongia)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loinhuan FROM chitiethoadon,sanpham WHERE chitiethoadon.MaSP=sanpham.MaSP";
+                $sql3 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loinhuan FROM chitiethoadon,sanpham WHERE chitiethoadon.MaSP=sanpham.MaSP GROUP BY year(CURDATE())";
                     $res1 = mysqli_query($conn,$sql3);
                     if(mysqli_num_rows($res1)>0){
                     $row = mysqli_fetch_assoc($res1);
@@ -198,73 +236,38 @@
                     <div class="p-4 card-body">
                         <h5 class="ps-1 card-title link-light mb-0">Lợi nhuận</h5>
                         <div class="ps-1 d-flex mb-2">
-                        <div class="col-md-9">
-                        <div class="div">
-                                <p class="card-text fs-3 link-light fw-bold"><?php echo number_format($row['loinhuan']); ?></p>
-                                <p class="card-text link-light">VNĐ</p>
-                            </div>
+                            <div class="col-md-9">
+                                <div class="div">
+                                    <p class="card-text fs-3 link-light fw-bold">
+                                        <?php echo number_format($row['loinhuan']); ?></p>
+                                    <p class="card-text link-light">VNĐ</p>
+                                </div>
 
                             </div>
                             <div class="col-md">
-                            <svg style="color:rgba(255, 255, 255, 0.4);"
-                                xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
-                                class="mt-4 bi bi-coin" viewBox="0 0 16 16">
-                                <path
-                                    d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path
-                                    d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-                            </svg>
+                                <svg style="color:rgba(255, 255, 255, 0.4);" xmlns="http://www.w3.org/2000/svg"
+                                    width="45" height="45" fill="currentColor" class="mt-4 bi bi-coin"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path
+                                        d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                                </svg>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
 
             </div>
             <div class="">
-                <canvas id="myChart" style="height:280px;border-radius:10px;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;" class="p-3 bg-white"></canvas>
+                <canvas id="myChart"
+                    style="height:280px;border-radius:10px;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;"
+                    class="p-3 bg-white"></canvas>
             </div>
         </section>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-
-        const showNavbar = (toggleId, navId, bodyId, headerId) => {
-            const toggle = document.getElementById(toggleId),
-                nav = document.getElementById(navId),
-                bodypd = document.getElementById(bodyId),
-                headerpd = document.getElementById(headerId)
-
-            // Validate that all variables exist
-            if (toggle && nav && bodypd && headerpd) {
-                toggle.addEventListener('click', () => {
-                    // show navbar
-                    nav.classList.toggle('show')
-                    // change icon
-                    toggle.classList.toggle('bx-x')
-                    // add padding to body
-                    bodypd.classList.toggle('body-pd')
-                    // add padding to header
-                    headerpd.classList.toggle('body-pd')
-                })
-            }
-        }
-
-        showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
-        /*===== LINK ACTIVE =====*/
-        const linkColor = document.querySelectorAll('.nav_link')
-
-        function colorLink() {
-            if (linkColor) {
-                linkColor.forEach(l => l.classList.remove('active'))
-                this.classList.add('active')
-            }
-        }
-        linkColor.forEach(l => l.addEventListener('click', colorLink))
-    });
-    </script>
     <script>
     const labels = [
         '',
@@ -290,7 +293,7 @@
             borderColor: '#33cb82',
             data: [0, <?php 
           
-          $sql4 = "SELECT sum(Dongia) as don FROM chitiethoadon,hoadon WHERE chitiethoadon.MaHD=hoadon.MaHD GROUP BY month(Ngaymua)";
+          $sql4 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban) as don FROM chitiethoadon,hoadon,sanpham WHERE chitiethoadon.MaHD=hoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP GROUP BY month(Ngaymua)";
           $res2 = mysqli_query($conn, $sql4);
           $count2 = mysqli_num_rows($res2);
           if($count2>0)
@@ -303,7 +306,7 @@
 ?>],
         }]
     };
-    
+
 
     const config = {
         type: 'line',
