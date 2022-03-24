@@ -123,7 +123,8 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                     $row = mysqli_fetch_assoc($result1);
                                     }
                                 ?>
-                            <form class="form-addaccount" action="process_updateaccount.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>?>"
+                            <form class="form-addaccount"
+                                action="process_updateaccount.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>?>"
                                 method="post">
                                 <div class="pt-1 pb-3 mx-3 row">
                                     <div class="col">
@@ -132,13 +133,13 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                             disabled placeholder="" value="<?php echo $row['id'];?>">
                                         <label class="mt-3">Họ và tên</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="hovaten"
-                                             placeholder="" value="<?php echo $row['hoten'];?>">
+                                            placeholder="" value="<?php echo $row['hoten'];?>">
                                         <label class="mt-3">Ngày sinh</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="date" name="ngaysinh"
-                                             placeholder="" value="<?php echo $row['ngaysinh'];?>">
+                                            placeholder="" value="<?php echo $row['ngaysinh'];?>">
                                         <label class="mt-3">Giới tính</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="gioitinh"
-                                         placeholder="" value="<?php echo $row['gioitinh'];?>">
+                                            placeholder="" value="<?php echo $row['gioitinh'];?>">
                                     </div>
                                     <div class="col">
                                         <label class="">Địa chỉ</label>
@@ -148,8 +149,15 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="tel" name="sdt"
                                             value="<?php echo $row['sđt'];?>">
                                         <label class="mt-3">Chức vụ</label>
-                                        <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="chucvu"
-                                            value="<?php echo $row['chucvu'];?>">
+                                        <select id="inputState" name="chucvu" required=""
+                                            class="col-md-12 ps-3 border py-2 rounded-3">
+                                            <option value="admin"
+                                                <?php echo $row['chucvu'] == 'admin'?'selected':''?>>admin</option>
+                                            <option value="Nhân viên"
+                                                <?php echo $row['chucvu'] == 'Nhân viên'?'selected':''?>>
+                                                Nhân viên</option>
+                                        </select>
+                                        
                                         <label class="mt-3">Lương</label>
                                         <input class="col-md-12 ps-3 border py-2 rounded-3" type="text" name="luong"
                                             value="<?php echo $row['luong'];?>">
