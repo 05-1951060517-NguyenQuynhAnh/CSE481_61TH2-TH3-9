@@ -13,7 +13,7 @@ if(!$conn){
                 header("location:index.php?id=$id");
             }
             else{
-                $error = "Xin lỗi! Bạn không phải là admin nên không có quyền truy cập vào trang này";
+                $error = "Xin lỗi! Bạn không phải là admin, không có quyền truy cập vào trang này";
                 header("location:sanpham/sanpham.php?id=$id&error=$error");
             }
         }else{

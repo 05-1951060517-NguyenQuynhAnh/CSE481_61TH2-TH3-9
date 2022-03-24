@@ -114,7 +114,7 @@ $sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
                     method="post">
                     <label for="txtMaSP">Mã sản phẩm</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
-                        placeholder="Nhập mã sản phẩm" value="<?php echo $row['MaSP'];?>">
+                        placeholder="Nhập mã sản phẩm" value="<?php echo $row['MaSP'];?>"readonly>
 
                     <div class="form-group mt-2">
                         <label for="txtTenSP">Tên sản phẩm</label>
@@ -124,16 +124,16 @@ $sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
                     <div class="form-group mt-2">
                         <label for="txtGiaban">Giá bán</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGiaban"
-                            placeholder="Nhập giá bán" value="<?php echo $row['Giaban'];?>">
+                            placeholder="Nhập giá bán" pattern="[0-9]{0-10}" title="Chỉ được nhập số"value="<?php echo $row['Giaban'];?>">
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtGianhap">Gia nhập</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGianhap"
-                            placeholder="Nhập giá nhập" value="<?php echo $row['Gianhap'];?>">
+                            placeholder="Nhập giá nhập" pattern="[0-9]{0-10}" title="Chỉ được nhập số"value="<?php echo $row['Gianhap'];?>">
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtSoluong">Số lượng</label>
-                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtSoluong"
+                        <input type="number" min=1 max=100 class="col-md-12 ps-3 border py-2 rounded-3" name="txtSoluong"
                             placeholder="Nhập số lượng" value="<?php echo $row['Soluong'];?>">
                     </div>
                     <div class="form-group mt-2">

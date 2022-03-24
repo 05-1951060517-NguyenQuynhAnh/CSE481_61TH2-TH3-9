@@ -162,7 +162,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     </div>
                 </div>
                 <?php 
-                $sql1 = "SELECT count(MaHD) as hoadon FROM `hoadon` GROUP BY year(CURDATE())";
+                $sql1 = "SELECT count(MaHD) as hoadon FROM `hoadon` where year(Ngaymua)= year(CURDATE())";
                     $result1 = mysqli_query($conn,$sql1);
                     if(mysqli_num_rows($result1)>0){
                     $row = mysqli_fetch_assoc($result1);
@@ -188,7 +188,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     </div>
                 </div>
                 <?php 
-                $sql2 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban) as doanhthu FROM sanpham,chitiethoadon where sanpham.MaSP=chitiethoadon.MaSP GROUP BY year(CURDATE()) ";
+                $sql2 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban) as doanhthu FROM sanpham,chitiethoadon,hoadon where hoadon.MaHD=chitiethoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP  and year(Ngaymua)= year(CURDATE()) ";
                     $res = mysqli_query($conn,$sql2);
                     if(mysqli_num_rows($res)>0){
                     $row = mysqli_fetch_assoc($res);
@@ -225,7 +225,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     </div>
                 </div>
                 <?php 
-                $sql3 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loinhuan FROM chitiethoadon,sanpham WHERE chitiethoadon.MaSP=sanpham.MaSP GROUP BY year(CURDATE())";
+                $sql3 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loinhuan FROM chitiethoadon,sanpham,hoadon WHERE hoadon.MaHD=chitiethoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP  and year(Ngaymua)= year(CURDATE()) ";
                     $res1 = mysqli_query($conn,$sql3);
                     if(mysqli_num_rows($res1)>0){
                     $row = mysqli_fetch_assoc($res1);
@@ -269,49 +269,95 @@ $sql = "SELECT * FROM account WHERE id='$id';";
         </section>
     </div>
     <script>
-    const labels = [
-        '',
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'Agust',
-        'September',
-        'October',
-        'November',
-        'December'
-    ];
-
     const data = {
-        labels: labels,
+        labels: [
+            'Tháng 1',
+            'Tháng 2',
+            'Tháng 3',
+            'Tháng 4',
+            'Tháng 5',
+            'Tháng 6',
+            'Tháng 7',
+            'Tháng 8',
+            'Tháng 9',
+            'Tháng 10',
+            'Tháng 11',
+            'Tháng 12'
+        ],
         datasets: [{
+            type: 'bar',
+            label: 'Lợi nhuận theo tháng',
+            data: [<?php 
+                $sql5 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loi FROM chitiethoadon,hoadon,sanpham WHERE chitiethoadon.MaHD=hoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP GROUP BY month(Ngaymua)";
+                $res3 = mysqli_query($conn, $sql5);
+                $count3 = mysqli_num_rows($res3);
+                if($count3>0)
+                {
+                    while($row=mysqli_fetch_assoc($res3))
+                    {
+                ?><?php echo $row['loi']?>, <?php
+                }
+                }           
+                ?>],
+            backgroundColor: [
+                'rgba(255, 159, 64, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(201, 203, 207, 0.4)',
+                'rgba(247, 127, 0, 0.4)',
+                'rgba(152, 75, 1, 0.4)',
+                'rgba(48, 69, 134, 0.4)',
+                'rgba(133, 72, 173, 0.4)',
+                'rgba(206, 118, 13, 0.4)'
+            ],
+            borderColor: [
+                'rgb(255, 159, 64)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(255, 99, 132)',
+                'rgb(201, 203, 207)',
+                'rgb(247, 127, 0)',
+                'rgb(152, 75, 1)',
+                'rgb(48, 69, 134)',
+                'rgb(133, 72, 173)',
+                'rgb(206, 118, 13)'
+            ],
+            borderWidth: 1
+        }, {
+            type: 'line',
             label: 'Doanh thu theo tháng',
+            data: [<?php  
+                $sql4 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban) as don FROM chitiethoadon,hoadon,sanpham WHERE chitiethoadon.MaHD=hoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP GROUP BY month(Ngaymua)";
+                $res2 = mysqli_query($conn, $sql4);
+                $count2 = mysqli_num_rows($res2);
+                if($count2>0)
+                {
+                    while($row=mysqli_fetch_assoc($res2))
+                    {
+                ?><?php echo $row['don']?>, <?php
+                    }
+                }           
+                ?>],
+            fill: false,
             backgroundColor: '#33cb82',
             borderColor: '#33cb82',
-            data: [0, <?php 
-          
-          $sql4 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban) as don FROM chitiethoadon,hoadon,sanpham WHERE chitiethoadon.MaHD=hoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP GROUP BY month(Ngaymua)";
-          $res2 = mysqli_query($conn, $sql4);
-          $count2 = mysqli_num_rows($res2);
-          if($count2>0)
-          {
-              while($row=mysqli_fetch_assoc($res2))
-              {
-      ?><?php echo $row['don']?>, <?php
-    }
-}           
-?>],
         }]
     };
-
-
     const config = {
-        type: 'line',
+        type: 'scatter',
         data: data,
-        options: {}
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     };
     </script>
     <script>

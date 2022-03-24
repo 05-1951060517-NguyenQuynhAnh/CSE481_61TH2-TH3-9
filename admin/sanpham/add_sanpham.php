@@ -117,27 +117,27 @@ $sql = "SELECT * FROM account WHERE id='$id';";
 
                     <label for="txtMaSP">Mã sản phẩm</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
-                        placeholder="Nhập mã sản phẩm" autofocus>
+                        placeholder="Nhập mã sản phẩm" autofocus required>
 
                     <div class="form-group mt-2">
                         <label for="txtTenSP">Tên sản phẩm</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtTenSP"
-                            placeholder="Nhập tên sản phẩm">
+                            placeholder="Nhập tên sản phẩm" required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtGiaban">Giá bán</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGiaban"
-                            placeholder="Nhập giá bán">
+                            placeholder="Nhập giá bán" pattern="[0-9]{0-10}" title="Chỉ được nhập số"required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtGianhap">Gia nhập</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGianhap"
-                            placeholder="Nhập giá nhập">
+                            placeholder="Nhập giá nhập"pattern="[0-9]{0-10}" title="Chỉ được nhập số"required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtSoluong">Số lượng</label>
-                        <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtSoluong"
-                            placeholder="Nhập số lượng">
+                        <input  type="number" min=1 max=100 class="col-md-12 ps-3 border py-2 rounded-3" name="txtSoluong"
+                            placeholder="Nhập số lượng"required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtTrangthai">Trạng thái</label>
@@ -149,7 +149,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     </div>
                     <div class="form-group mt-2">
                         Mô tả<br>
-                        <textarea class="ps-3 border py-2 rounded-3 col-md-12" rows="7" name="txtMota"></textarea><br>
+                        <textarea class="ps-3 border py-2 rounded-3 col-md-12" rows="7" name="txtMota" required></textarea><br>
                     </div>
                     <div class="form-group mt-2">
                         <input type="file" required="" name="file3" class="form-control-file">
