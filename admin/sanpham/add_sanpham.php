@@ -108,11 +108,16 @@ $sql = "SELECT * FROM account WHERE id='$id';";
             <div class="px-5 py-4"
                 style="background:white;box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;border-radius:10px">
                 <p class="fs-4 fw-bold">Thêm sản phẩm</p>
+                <?php
+            if(isset($_GET['error'])){
+                echo "<h5 style ='color:red'>{$_GET['error']}</h5>";
+                }
+            ?>
                 <form action="process_add_sanpham.php?id=<?php echo $id ?>" method="post">
 
                     <label for="txtMaSP">Mã sản phẩm</label>
                     <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtMaSP"
-                        placeholder="Nhập mã sản phẩm">
+                        placeholder="Nhập mã sản phẩm" autofocus>
 
                     <div class="form-group mt-2">
                         <label for="txtTenSP">Tên sản phẩm</label>
@@ -149,8 +154,36 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     <div class="form-group mt-2">
                         <input type="file" required="" name="file3" class="form-control-file">
                     </div>
-                    <button type="submit" style="background:#ffc107" class="btn  mt-4">Tạo sản phẩm</button>
-                </form>
+                    <button type="submit" style="background:#ffc107" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="btn  mt-4">Tạo sản phẩm mới</button>
+                        </form>
+                    <?php
+                                    if(isset($_GET['error'])){
+                                       ?>
+                                  
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title link-danger" id="staticBackdropLabel">Thông báo lỗi!</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <?php echo "{$_GET['error']}" ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-dismiss="modal">Đồng ý</button>
+                                                       <a href="sanpham.php?id=<?php echo $id ?>"><button type="button" class="btn btn-secondary">Quay lại</button></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><?php
+                                        }
+                                ?>
+                
                 <a class="text-decoration-none link-dark" style="font-size:13px" href="sanpham.php?id=<?php echo $id ?>">
                     <div class="mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"

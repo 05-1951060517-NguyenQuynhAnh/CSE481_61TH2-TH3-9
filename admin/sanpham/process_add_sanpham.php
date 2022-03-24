@@ -11,20 +11,30 @@ $id = $_GET['id'];
     if (!$MaSP || !$TenSP || !$Giaban || !$Gianhap || !$Soluong || !$Trangthai || !$Mota || !$file3 )
     {
         $error = "Vui lòng nhập đầy đủ thông tin";
-        header("location:add_sanpham.php??id=$id&error=$error"); 
+        header("location:add_sanpham.php?id=$id&error=$error"); 
         exit;
     }
     require_once '../../config/database.php';
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
-    $sql = "INSERT INTO sanpham (MaSP,TenSP,Giaban,Gianhap,Soluong,Mota,Trangthai,img,MaLH) VALUES('$MaSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Trangthai','$file3','LH01')";
-    $number = mysqli_query($conn,$sql);
-    if($number > 0){
-     header("location: sanpham.php?id=$id"); 
-    }else{
-        header("location: error.php"); 
-    }
+    
+    $sql01 = "SELECT * FROM sanpham where MaSP='$MaSP'";
 
-    mysqli_close($conn);
+    $result = mysqli_query($conn,$sql01);
+    if(mysqli_num_rows($result) > 0){
+
+    $error = "MaSP bị trùng";
+    header("location:add_sanpham.php?id=$id&error=$error"); 
+    }else{
+    $sql = "INSERT INTO sanpham (MaSP,TenSP,Giaban,Gianhap,Soluong,Mota,Trangthai,img,MaLH) VALUES('$MaSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Trangthai','$file3','LH01')";
+    $result = mysqli_query($conn,$sql);
+    if($result ==true){
+        header("location:sanpham.php?id=$id"); 
+    }else{
+        $error = "Bạn nhập thông tin chưa đúng";
+        header("location:add_sanpham.php?id=$id&error=$error");
+    }
+    }
+    mysqli_close($conn);  
 ?>

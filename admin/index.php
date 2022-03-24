@@ -162,7 +162,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     </div>
                 </div>
                 <?php 
-                $sql1 = "SELECT sum(MaHD) as hoadon FROM `hoadon` GROUP BY year(CURDATE())";
+                $sql1 = "SELECT count(MaHD) as hoadon FROM `hoadon` GROUP BY year(CURDATE())";
                     $result1 = mysqli_query($conn,$sql1);
                     if(mysqli_num_rows($result1)>0){
                     $row = mysqli_fetch_assoc($result1);
