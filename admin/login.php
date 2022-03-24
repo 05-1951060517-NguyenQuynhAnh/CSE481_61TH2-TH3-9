@@ -23,7 +23,7 @@
                 <div class="login col-md-12 d-flex justify-content-center">
                     <div style="box-shadow: 0 2px 4px 0 #0000001a, 0 8px 16px 0 #0000001a;background:white;width:600px;border-radius:8px"
                         class="">
-                        <p class=" ps-4 mt-5 ms-2 fs-2 mb-0 fw-bold ">Đăng nhập</p>
+                        <p class="text-center ps-4 mt-5 ms-2 fs-2 mb-0 fw-bold ">Đăng nhập</p>
                         <hr>
                         <form class="form-login" action="process_login_admin.php" method="post">
                             <div class="pt-1 pb-3 px-2 mx-3">
@@ -39,9 +39,9 @@
                                 ?>
                                     </div>
                                 <div class="mb-5 mt-3 mx-auto p-1 text-center">
-                                    <button style="color:white;background:#42b72a"
-                                        class="col-md-12 mt-3 mb-2 fw-bold btn btn-lg btn-block" type="submit"
-                                        name="btnLogin">Đăng ký</button>
+                                    <button style="color:white;"
+                                        class="col-md-12 mt-3 mb-2 fw-bold btn btn-warning btn-lg btn-block" type="submit"
+                                        name="btnLogin">Đăng nhập</button>
                                 </div>
                             </div>
                         </form>
