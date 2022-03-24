@@ -13,6 +13,12 @@ $id1 = $_GET['id'];
         exit;
     }
 
+    if (strlen($matkhau) < 6)
+    { $error = "Mật khẩu quá ngắn, hãy thử với mật khẩu khác an toàn hơn.";
+        header("location:addaccount.php?id=$id1&error=$error");
+        exit;
+    }   
+
     $conn = mysqli_connect('localhost','root','','cse481');
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
