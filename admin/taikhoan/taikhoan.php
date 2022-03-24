@@ -173,43 +173,14 @@ if(!isset($_SESSION['isLoginOK'])){
                                 <td><?php echo $row['luong']; ?></td>
                                 <td><a href="update_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>"><i
                                             class="bi bi-pencil-square"></i></a></td>
-                                <td>
-                                    <button type="button" style="background: transparent;" class="border-0"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Xóa tài khoản</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Bạn có chắc chắn muốn xóa tài khoản này?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a
-                                                        href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>"><button
-                                                            type="button" class="btn btn-primary">Có</button></a>
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Không</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><a href="delete_account.php?id=<?php echo $id ?>&id1=<?php echo $row['id']; ?>"><i
+                                            class="bi bi-trash"></i></a></td>
                             </tr>
                             <?php
                         }
                     }
                     mysqli_close($conn);
                 ?>
-
-
                         </tbody>
                     </table>
                 </div>

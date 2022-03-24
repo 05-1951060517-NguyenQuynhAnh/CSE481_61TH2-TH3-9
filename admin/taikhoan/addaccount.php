@@ -124,7 +124,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                                 <input class="ms-3 " id="radio2" type="radio" value="Nam" name="gioitinh">
                                 <label for="radio2">Nam</label>
                                 <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="date" name="ngaysinh">
-                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="text" name="email"
+                                <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="email" name="email"
                                     placeholder="Email">
                                 <input class="col-md-12 ps-3 mt-3 border py-2 rounded-3" type="password" name="matkhau"
                                     placeholder="Mật khẩu">
