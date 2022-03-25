@@ -140,7 +140,7 @@ $sql = "SELECT * FROM taikhoan,sanpham WHERE id='$id' and MaSP='$id1';";
                         <label for="txtTrangthai">Trạng thái</label>
                         <select id="inputState" name="txtTrangthai" required=""
                             class="col-md-12 ps-3 border py-2 rounded-3">
-                            <option value="Tạm dừng bán" <?php echo $row['Trangthai'] == 'Đang bán'?'selected':''?>>Đang
+                            <option value="Đang bán" <?php echo $row['Trangthai'] == 'Đang bán'?'selected':''?>>Đang
                                 bán</option>
                             <option value="Tạm dừng bán" <?php echo $row['Trangthai'] == 'Tạm dừng bán'?'selected':''?>>
                                 Tạm dừng bán</option>
