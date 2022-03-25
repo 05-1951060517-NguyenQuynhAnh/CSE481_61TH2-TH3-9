@@ -23,11 +23,19 @@ $id1 = $_GET['id'];
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
-    $sql01 = "SELECT * FROM account WHERE email = '$email'";
+    $sql02 = "select * from account where id= '$id'"; 
+    $result1 = mysqli_query($conn,$sql02);
+    if(mysqli_num_rows($result1) > 0){
+        $row=mysqli_fetch_assoc($result1);}
+        if($id==$row['id']){
+            $error = "Mã nhân viên đã tồn tại";
+            header("location:addaccount.php?id=$id1&error=$error"); 
+            exit;
+        }
 
+    $sql01 = "SELECT * FROM account WHERE email = '$email'";
     $result = mysqli_query($conn,$sql01);
     if(mysqli_num_rows($result) > 0){
-
     $error = "Tài khoản Email đã tồn tại";
     header("location:addaccount.php?id=$id1&error=$error"); 
     }else{
