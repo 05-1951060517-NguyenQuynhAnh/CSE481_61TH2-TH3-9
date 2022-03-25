@@ -124,12 +124,12 @@ $sql = "SELECT * FROM taikhoan,sanpham WHERE id='$id' and MaSP='$id1';";
                     <div class="form-group mt-2">
                         <label for="txtGiaban">Giá bán</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGiaban"
-                            placeholder="Nhập giá bán" pattern="[0-9]{0-10}" title="Chỉ được nhập số"value="<?php echo $row['Giaban'];?>" required>
+                            placeholder="Nhập giá bán" pattern="[0-9]{1,10}" title="Chỉ được nhập số"value="<?php echo $row['Giaban'];?>" required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtGianhap">Gia nhập</label>
                         <input type="text" class="col-md-12 ps-3 border py-2 rounded-3" name="txtGianhap"
-                            placeholder="Nhập giá nhập" pattern="[0-9]{0-10}" title="Chỉ được nhập số"value="<?php echo $row['Gianhap'];?>"required>
+                            placeholder="Nhập giá nhập" pattern="[0-9]{1,10}" title="Chỉ được nhập số"value="<?php echo $row['Gianhap'];?>"required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="txtSoluong">Số lượng</label>
