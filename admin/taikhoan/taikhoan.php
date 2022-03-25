@@ -2,7 +2,7 @@
 ?>
 <?php
 $id = $_GET['id'];
-$sql1 = "SELECT * FROM account WHERE id='$id';";
+$sql1 = "SELECT * FROM taikhoan WHERE id='$id';";
 $result = mysqli_query($conn,$sql1);
 if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_assoc($result);
@@ -152,7 +152,7 @@ if(!isset($_SESSION['isLoginOK'])){
                         <tbody>
                             <?php 
 
-                                $sql = "SELECT * FROM account ";
+                                $sql = "SELECT * FROM taikhoan ";
                                 $res = mysqli_query($conn, $sql);
                                 $count = mysqli_num_rows($res);
                                 if($count>0)

@@ -3,7 +3,7 @@
 <?php
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM account WHERE id='$id';";
+$sql = "SELECT * FROM taikhoan WHERE id='$id';";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_assoc($result);
@@ -117,7 +117,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                             <hr>
                             <?php
                                 $id1 = $_GET['id1'];
-                                $sql1 = "SELECT * FROM account WHERE id='$id1';";
+                                $sql1 = "SELECT * FROM taikhoan WHERE id='$id1';";
                                     $result1 = mysqli_query($conn,$sql1);
                                     if(mysqli_num_rows($result1)>0){
                                     $row = mysqli_fetch_assoc($result1);

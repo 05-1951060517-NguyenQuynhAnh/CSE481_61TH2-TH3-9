@@ -7,7 +7,7 @@
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
   
-    $sql = "DELETE FROM account WHERE id = '$id1'";
+    $sql = "DELETE FROM taikhoan WHERE id = '$id1'";
 
     $number = mysqli_query($conn,$sql);
 

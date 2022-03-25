@@ -23,7 +23,7 @@ $id1 = $_GET['id'];
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
-    $sql02 = "select * from account where id= '$id'"; 
+    $sql02 = "select * from taikhoan where id= '$id'"; 
     $result1 = mysqli_query($conn,$sql02);
     if(mysqli_num_rows($result1) > 0){
         $row=mysqli_fetch_assoc($result1);}
@@ -33,7 +33,7 @@ $id1 = $_GET['id'];
             exit;
         }
 
-    $sql01 = "SELECT * FROM account WHERE email = '$email'";
+    $sql01 = "SELECT * FROM taikhoan WHERE email = '$email'";
     $result = mysqli_query($conn,$sql01);
     if(mysqli_num_rows($result) > 0){
     $error = "Tài khoản Email đã tồn tại";
