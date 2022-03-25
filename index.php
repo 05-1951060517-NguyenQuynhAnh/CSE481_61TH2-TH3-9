@@ -156,7 +156,7 @@
 
                     <?php 
           
-                                $sql2 = "SELECT *, sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam FROM sanpham ORDER BY Ngaynhap DESC LIMIT 8";
+                                $sql2 = "SELECT * FROM sanpham ORDER BY Ngaynhap DESC LIMIT 8";
                                 $res2 = mysqli_query($conn, $sql2);
                                 $count2 = mysqli_num_rows($res2);
                                 if($count2>0)
@@ -184,7 +184,7 @@
                             </div>
                             <div class="card-body px-0">
                                 <p class="card-text"><?php echo $row['TenSP']; ?></p>
-                                <p class="fw-bold"><?php echo $row['Giagiam']; ?> VNĐ</p>
+                                <p class="fw-bold"><?php echo number_format($row['Giaban']); ?> VNĐ</p>
                             </div>
                         </div>
 

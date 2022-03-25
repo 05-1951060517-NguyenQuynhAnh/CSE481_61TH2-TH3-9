@@ -2,7 +2,7 @@
 ?>
 <?php 
     $id =$_GET['id'];
-    $sql = "SELECT *,sanpham.Giaban-(sanpham.Giaban*sanpham.Tylegiamgia) as Giagiam FROM sanpham INNER JOIN chitietsanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE sanpham.MaSP = '$id'";
+    $sql = "SELECT * FROM sanpham  WHERE sanpham.MaSP = '$id'";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_assoc($result);
@@ -144,13 +144,13 @@
                         data-bs-interval="false">
                         <div class="carousel-inner mt-3">
                             <div class="carousel-item active">
-                                <img src="img/<?php echo $row['img1']; ?>" style="height:600px"class="img-fluid d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img']; ?>" style="height:600px"class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/<?php echo $row['img2']; ?>" style="height:600px" class="img-fluid d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img']; ?>" style="height:600px" class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="img/<?php echo $row['img3']; ?>" style="height:600px" class="img-fluid d-block w-100" alt="...">
+                                <img src="img/<?php echo $row['img']; ?>" style="height:600px" class="img-fluid d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button"
@@ -171,28 +171,28 @@
                         <span class="text-muted " name="masp">Mã sản phẩm: <?php echo $row['MaSP']; ?></span>
                     </div>
                     <hr>
-                    <h4 class="text-warning" name="giaban"><?php echo $row['Giagiam']; ?> VNĐ</h4>
+                    <h4 class="text-warning" name="giaban"><?php echo number_format($row['Giaban']); ?> VNĐ</h4>
                     
-                        <p class="fw-bold mt-3">Size:</p>
+                    <p class="fw-bold mt-3">Size:</p>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="size" id="inlineRadio1" value="SizeS">
                             <label class="form-check-label fw-bold"
-                                for="inlineRadio1"><?php echo $row['size1']; ?></label>
+                                for="inlineRadio1">Size S</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeM">
                             <label class="form-check-label fw-bold"
-                                for="inlineRadio2"><?php echo $row['size2']; ?></label>
+                                for="inlineRadio2">Size M</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeL">
                             <label class="form-check-label fw-bold"
-                                for="inlineRadio2"><?php echo $row['size3']; ?></label>
+                                for="inlineRadio2">Size L</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="SizeXL">
                             <label class="form-check-label fw-bold"
-                                for="inlineRadio2"><?php echo $row['size4']; ?></label>
+                                for="inlineRadio2">Size XL</label>
                         </div>
                         <div class="selector mt-5">
                             <label class="form-check-label fw-bold" for="inlineRadio2">Số lượng: </label>
@@ -226,11 +226,9 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="mt-3">
                             <h6><?php echo $row['TenSP']; ?></h6>
-                            <p><?php echo $row['mota1']; ?></p>
-                            <p><?php echo $row['mota2']; ?></p>
-                            <p><?php echo $row['mota3']; ?></p>
-                            <p class="mt-3"> Sản phẩm áo thun với chất liệu 100% cotton co giãn 2 chiều đem đến cho
-                                người mặc sự thoáng mát và thoải mái nhất khi mặc.</p>
+                            <textarea class="ps-3 border-0 py-2 rounded-3 col-md-12" rows="7"
+                            name="txtMota" disabled><?php echo $row['Mota'];?></textarea>
+                            
                         </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

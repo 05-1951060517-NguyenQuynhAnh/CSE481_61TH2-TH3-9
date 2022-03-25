@@ -22,7 +22,7 @@ $id = $_GET['id'];
     $error = "MaSP bị trùng";
     header("location:add_sanpham.php?id=$id&error=$error"); 
     }else{
-    $sql = "INSERT INTO sanpham (MaSP,TenSP,Giaban,Gianhap,Soluong,Mota,Trangthai,img,MaLH) VALUES('$MaSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Trangthai','$file3','LH01')";
+    $sql = "INSERT INTO sanpham (MaSP,TenSP,Giaban,Gianhap,Soluong,Mota,Trangthai,img) VALUES('$MaSP','$TenSP','$Giaban','$Gianhap','$Soluong','$Mota','$Trangthai','$file3')";
     $result = mysqli_query($conn,$sql);
     if($result ==true){
         header("location:sanpham.php?id=$id"); 
