@@ -7,7 +7,7 @@
         if(!$conn){
             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
         }
-        $sql = "SELECT * FROM account WHERE email ='$user'AND password='$pass'";
+        $sql = "SELECT * FROM taikhoan WHERE email ='$user'AND password='$pass'";
         $result = mysqli_query($conn,$sql);
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);

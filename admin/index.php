@@ -14,7 +14,7 @@ if(!isset($_SESSION['isLoginOK'])){
 ?>
 <?php
 
-$sql = "SELECT * FROM account WHERE id='$id';";
+$sql = "SELECT * FROM taikhoan WHERE id='$id';";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_assoc($result);
@@ -225,7 +225,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
                     </div>
                 </div>
                 <?php 
-                $sql3 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loinhuan FROM chitiethoadon,sanpham,hoadon WHERE hoadon.MaHD=chitiethoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP  and year(Ngaymua)= year(CURDATE()) ";
+                $sql3 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from taikhoan)) as loinhuan FROM chitiethoadon,sanpham,hoadon WHERE hoadon.MaHD=chitiethoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP  and year(Ngaymua)= year(CURDATE()) ";
                     $res1 = mysqli_query($conn,$sql3);
                     if(mysqli_num_rows($res1)>0){
                     $row = mysqli_fetch_assoc($res1);
@@ -288,7 +288,7 @@ $sql = "SELECT * FROM account WHERE id='$id';";
             type: 'bar',
             label: 'Lợi nhuận theo tháng',
             data: [<?php 
-                $sql5 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from account)) as loi FROM chitiethoadon,hoadon,sanpham WHERE chitiethoadon.MaHD=hoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP GROUP BY month(Ngaymua)";
+                $sql5 = "SELECT sum(chitiethoadon.Sluong*sanpham.Giaban)-(sum(Sluong*Gianhap) + (SELECT sum(luong) from taikhoan)) as loi FROM chitiethoadon,hoadon,sanpham WHERE chitiethoadon.MaHD=hoadon.MaHD and sanpham.MaSP=chitiethoadon.MaSP GROUP BY month(Ngaymua)";
                 $res3 = mysqli_query($conn, $sql5);
                 $count3 = mysqli_num_rows($res3);
                 if($count3>0)

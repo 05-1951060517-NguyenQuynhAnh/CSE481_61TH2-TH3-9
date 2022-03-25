@@ -2,7 +2,7 @@
 ?>
 <?php
 $id = $_GET['id'];
-$sql1 = "SELECT * FROM account WHERE id='$id';";
+$sql1 = "SELECT * FROM taikhoan WHERE id='$id';";
     $result = mysqli_query($conn,$sql1);
     if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_assoc($result);
@@ -121,7 +121,7 @@ $sql1 = "SELECT * FROM account WHERE id='$id';";
                 </div>
                 <div>
                     <a class="btn btn-warning" href="add_sanpham.php?id=<?php echo $id ?>"><i
-                            class="bi bi-plus-circle"></i> Thêm sản phẩm
+                            class="bi bi-plus-circle"></i> Tạo sản phẩm
                         mới</a>
                 </div>
                 <table class="mt-3 table table-striped">

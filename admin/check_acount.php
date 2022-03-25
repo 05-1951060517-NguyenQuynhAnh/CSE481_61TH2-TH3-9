@@ -5,7 +5,7 @@ if(!$conn){
     die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
 }
         $id = $_GET['id'];
-        $sql = "SELECT * FROM account WHERE id ='$id'";
+        $sql = "SELECT * FROM taikhoan WHERE id ='$id'";
         $result = mysqli_query($conn,$sql);
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);

@@ -3,7 +3,7 @@
 <?php
 $id = $_GET['id'];
 $id1 = $_GET['id1'];
-$sql = "SELECT * FROM account,sanpham WHERE id='$id' and MaSP='$id1';";
+$sql = "SELECT * FROM taikhoan,sanpham WHERE id='$id' and MaSP='$id1';";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_assoc($result);
